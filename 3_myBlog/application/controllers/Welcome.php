@@ -34,7 +34,7 @@ class Welcome extends CI_Controller
         $vals = array(
             'word'      => $word,
             'img_path'  => './captcha/',
-            'img_url'   => 'http://127.0.0.1/3_myBlog/captcha/',
+            'img_url'   => 'http://127.0.0.1//php/3_myBlog/captcha/',
             'font_path' => './path/to/fonts/texb.ttf',
             'img_width' => 100,
             'img_height'    => 30,
@@ -50,7 +50,6 @@ class Welcome extends CI_Controller
                 'grid' => array(255, 40, 40)
             )
         );
-
 //		GD2
         $cap = create_captcha($vals);
         $img = $cap['image'];

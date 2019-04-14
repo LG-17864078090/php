@@ -108,7 +108,7 @@
 	<option value="海外">海外</option>
 </select>
 <select name="city" id="userCity"></select>
-<script src="images/getcity.js"></script><span class="nodisp">请选择您所在的地区</span></td>
+<script src="js/getcity.js"></script><span class="nodisp">请选择您所在的地区</span></td>
     	</tr>
     	<tr>
     		<th>验证码：</th>
