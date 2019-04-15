@@ -13,8 +13,10 @@
 
     <div class="main">
         <div class="operating"><a href="welcome/announcement">公告发布</a></div>
+
         <div class="operating">课程增减</div>
         <div class="operating">教学资源分配</div>
+        <div class="operating"><a href="welcome/change_school_info">学校信息修改</a></div>
     </div>
 
     <div class="footer">© 学生学情管理系统</div>

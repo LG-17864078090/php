@@ -1,3 +1,4 @@
+<?php $user = $this->session->userdata('user')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +12,16 @@
 <div class="wrapper">
     <div class="header">
         <li class="main-memu"><span id="index">首页</span></li>
-        <li class="main-memu"><span id="reg">注册</span></li>
-        <li class="main-memu"><span id="login">登录</span></li>
+        <?php if(!isset($user)){?>
+            <li class="main-memu"><span id="reg">注册</span></li>
+            <li class="main-memu"><span id="login">登录</span></li>
+        <?php }?>
+
         <li class="main-memu"><span id="about">关于</span></li>
         <li class="main-memu now"><span id="contact">联系我们</span></li>
+        <?php if(isset($user)){?>
+            <span class="exit"><a href='user/logout'>[ 退出登录 ]</a></span>
+        <?php }?>
     </div>
 
     <div class="contact-us">

@@ -238,6 +238,20 @@ class user extends CI_Controller {
         }
     }
 
+    //学校信息更改
+    public function change_school_info(){
+        $id = $this->input->get('id');
+        $intro = $this->input->get('intro');
+        $about = $this->input->get('about');
+
+        $rows = $this->Announce_model->change_school_info($id,$intro,$about);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
 
 
 

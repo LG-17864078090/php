@@ -1,3 +1,4 @@
+<?php $user = $this->session->userdata('user')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

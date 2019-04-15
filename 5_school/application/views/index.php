@@ -1,3 +1,5 @@
+
+<?php $user = $this->session->userdata('user')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +12,17 @@
 <body>
 <div class="wrapper">
     <div class="header">
+
         <li class="main-memu now"><span id="index">首页</span></li>
-        <li class="main-memu"><span id="reg" href="Welcome/reg/">注册</span></li>
-        <li class="main-memu"><span id="login">登录</span></li>
+        <?php if(!isset($user)){?>
+            <li class="main-memu"><span id="reg">注册</span></li>
+            <li class="main-memu"><span id="login">登录</span></li>
+        <?php }?>
         <li class="main-memu"><span id="about">关于</span></li>
         <li class="main-memu"><span id="contact">联系我们</span></li>
+        <?php if(isset($user)){?>
+            <span class="exit"><a href='user/logout'>[ 退出登录 ]</a></span>
+        <?php }?>
 
     </div>
     <div class="school">
@@ -27,7 +35,8 @@
         <div class="school-topic">
             <h3>公告</h3>
             <?php foreach ($announce_list as $announce){?>
-                <li><?php echo $announce->title?></li>
+
+                <li><a href="welcome/announcement_detail/<?php echo $announce->id;?>"><?php echo $announce->title?></a></li>
             <?php }?>
         </div>
 
@@ -53,6 +62,12 @@
     $('#contact').on('click',function () {
         $.get('',{},function (data) {location.href = 'welcome/contact_us';},'text')
     })
+
+    function showDetail(index) {
+        console.log(index);
+        console.log(111);
+
+    }
 </script>
 
 </body>

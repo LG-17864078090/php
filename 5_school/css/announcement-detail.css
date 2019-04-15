@@ -1,0 +1,41 @@
+
+.main{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.main .container{
+    width: 50%;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.main .container .change{
+    display: flex;
+}
+.main .container .change>button{
+    height: 30px;
+    padding: 5px;
+    margin-top: 8px;
+    background-color: #ff6666;
+    border: 0;
+    border-radius: 5px;
+}
+.main .container .change .pre{
+    position: relative;
+    left: -50px;
+}
+.main .container .change .next{
+    position: relative;
+    left: 50px;
+}
+.main .container .title{
+    text-align: center;
+    flex: 1;
+}
+.main .container .time{
+    text-align: center;
+    margin: 8px;
+    color: #cccccc;
+    font-size: 13px;
+}

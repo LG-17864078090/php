@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Announce_model');
+        $this->load->model('User_model');
     }
 
 
@@ -39,7 +40,10 @@ class Welcome extends CI_Controller {
 
     public function about()//加载关于页
     {
-        $this->load->view('about');
+        $school_info = $this->Announce_model->get_school_info();
+        $this->load->view('about',array(
+            'school_info' => $school_info,
+        ));
     }
 
     public function contact_us()//加载联系我们页
@@ -99,6 +103,39 @@ class Welcome extends CI_Controller {
     public function announcement()//发布公告界面
     {
         $this->load->view('announcement');
+    }
+    public function change_school_info()//改变学校信息界面
+    {
+        $school_info = $this->Announce_model->get_school_info();
+        $this->load->view('change-school-info',array(
+            'school_info' => $school_info,
+        ));
+    }
+    public function announcement_detail($announce_id)//公告详情界面
+    {
+        $announce = $this->Announce_model->get_announce_by_id($announce_id);
+        $announce_list = $this->Announce_model->get_announce_list();
+        $admin = $this->User_model->get_admin_by_ID($announce->publisherID);
+
+        $next = null;
+        $prev = null;
+        foreach ($announce_list as $index=>$announcement){
+            if($announcement->id == $announce->id){
+                if($index > 0){
+                    $prev = $announce_list[$index - 1];
+                }
+                if($index < count($announce_list)-1){
+                    $next = $announce_list[$index + 1];
+                }
+            }
+        }
+
+        $this->load->view('announcement-detail',array(
+            'prev' => $prev,
+            'next' => $next,
+            'announce' => $announce,
+            'admin' => $admin,
+        ));
     }
 
 

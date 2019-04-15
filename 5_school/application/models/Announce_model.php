@@ -20,6 +20,14 @@ class Announce_model extends CI_Model
         return $query;
     }
 
+    public function get_announce_by_id($announce_id){
+        $query = $this->db->get_where('announces',array(
+            'id'=> $announce_id
+        ));
+        return $query->row();
+
+    }
+
     //获取公告列表
     public function  get_announce_list(){
         $query = $this->db->get('announces');
@@ -30,5 +38,19 @@ class Announce_model extends CI_Model
     public function  get_school_info(){
         $query = $this->db->get('school_info');
         return $query->row();
+    }
+
+    //变更学校信息
+    public function  change_school_info($id,$intro,$about){
+//        $query = $this->db->get('school_info');
+//        return $query->row();
+        $data = array(
+            'intro' => $intro,
+            'about' => $about,
+        );
+
+        $this->db->where('id', $id);
+        $query = $this->db->update('school_info', $data);
+        return $query;
     }
 }
