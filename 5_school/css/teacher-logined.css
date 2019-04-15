@@ -1,0 +1,35 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+}
+.header .exit{
+    float: right;
+    font-size: 14px;
+    color: #666666;
+}
+.header>span{
+    margin: 0 20px;
+    text-align: center;
+    line-height: 30px;
+}
+.header .exit:hover{
+    cursor: pointer;
+}
+.main{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+.main .operating{
+    background: #ff6666;
+    height: 50px;
+    margin: 20px 200px 0 200px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+}
+.main .operating:hover{
+    cursor: pointer;
+    background: #cccccc;
+}
+

@@ -1,0 +1,29 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+    display: flex;
+}
+.header .now{
+    color: white;
+}
+.header .main-memu{
+    flex: 1;
+    text-align: center;
+    line-height: 30px;
+}
+.header .main-memu>span:hover{
+    color: white;
+    cursor: pointer;
+}
+.contact-us{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.contact-us .container{
+    width: 17%;
+    margin: 0 auto;
+}
+.contact-us .container>img{
+    width: 150px;
+}

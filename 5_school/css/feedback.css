@@ -1,0 +1,43 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+}
+.header .exit{
+    float: right;
+    font-size: 14px;
+    color: #666666;
+}
+.header>span{
+    margin: 0 20px;
+    text-align: center;
+    line-height: 30px;
+}
+.header .exit:hover{
+    cursor: pointer;
+}
+.main{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.main .container{
+    width: 50%;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+#problem{
+
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+}
+#contact-way{
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+}
+.main .container .submit{
+    display: block;
+    padding: 5px;
+    margin: 10px auto;
+}

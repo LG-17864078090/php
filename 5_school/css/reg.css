@@ -1,0 +1,70 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+    display: flex;
+}
+.header .now{
+    color: white;
+}
+.header .main-memu{
+    flex: 1;
+    text-align: center;
+    line-height: 30px;
+}
+.header .main-memu>span:hover{
+    color: white;
+    cursor: pointer;
+}
+.reg{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.reg .container{
+    width: 50%;
+    margin: 0 auto;
+}
+.reg .container .input{
+    height: 30px;
+    margin: 10px auto;
+    width: 230px;
+}
+.reg .container .tip{
+    display: inline-block;
+    width: 68px;
+    height: 42px;
+    vertical-align: -webkit-baseline-middle;
+    text-align: justify;
+}
+.reg .container .tip:after{
+    content: " ";
+    display: inline-block;
+    width: 100%;
+}
+.reg .container>button{
+    display: block;
+    width: 60px;
+    height: 30px;
+    margin:20px auto;
+    position: relative;
+    left:-30px;
+}
+.reg .container .warming{
+    color: red;
+}
+
+.reg .container .select-work{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.reg .container .select-work>span{
+    margin-right: 45px;
+}
+.reg .container>p{
+    text-align: center;
+    color: #cccccc;
+    font-size: 14px;
+    position: relative;
+    left: -30px;
+}
+

@@ -1,0 +1,37 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+}
+.header .exit{
+    float: right;
+    font-size: 14px;
+    color: #666666;
+}
+.header>span{
+    margin: 0 20px;
+    text-align: center;
+    line-height: 30px;
+}
+.header .exit:hover{
+    cursor: pointer;
+}
+.main{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.main .container{
+    width: 50%;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.main .container>img{
+    display: block;
+    width: 350px;
+    height: 220px;
+    margin: 0 auto;
+}
+.main .container>h3{
+    margin: 0 auto 20px auto;
+    text-align: center;
+}

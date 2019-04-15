@@ -1,0 +1,43 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+}
+.header .exit{
+    float: right;
+    font-size: 14px;
+    color: #666666;
+}
+.header>span{
+    margin: 0 20px;
+    text-align: center;
+    line-height: 30px;
+}
+.header .exit:hover{
+    cursor: pointer;
+}
+.main{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 30px 0;
+}
+.main .info{
+    width: 400px;
+    margin: 0 auto;
+}
+.main .info .tip{
+    display: inline-block;
+    width: 68px;
+    height: 24px;
+    text-align: justify;
+}
+.main .info .tip:after{
+    content: " ";
+    display: inline-block;
+    width: 100%;
+}
+.main .info .change-info{
+    font-size: 13px;
+    text-align: center;
+    padding-top: 20px;
+}
+

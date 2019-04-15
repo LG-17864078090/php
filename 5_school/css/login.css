@@ -1,0 +1,59 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+    display: flex;
+}
+.header .now{
+    color: white;
+}
+.header .main-memu{
+    flex: 1;
+    text-align: center;
+    line-height: 30px;
+}
+.header .main-memu>span:hover{
+    color: white;
+    cursor: pointer;
+}
+.login{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.login .container{
+    width: 50%;
+    margin: 0 auto;
+}
+.login .container .input{
+    height: 30px;
+    margin: 10px auto;
+    width: 230px;
+}
+.login .container .tip{
+    margin-left: 30px;
+}
+.login .container>button{
+    display: block;
+    width: 60px;
+    height: 30px;
+    margin:20px auto;
+    position: relative;
+    left:-30px;
+}
+.login .container .warming{
+    color: red;
+}
+.login .container>a{
+    font-size: 14px;
+    float: right;
+    margin-right: 30px;
+}
+.login .container .select-work{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.login .container .select-work>span{
+    margin-right: 45px;
+
+}
+

@@ -1,0 +1,46 @@
+.header{
+    height: 30px;
+    background: #ff6666;
+    display: flex;
+}
+.header .now{
+    color: white;
+}
+.header .main-memu{
+    flex: 1;
+    text-align: center;
+    line-height: 30px;
+}
+.header .main-memu>span:hover{
+    color: white;
+    cursor: pointer;
+}
+.school{
+    border: 1px solid #cccccc;
+    display: flex;
+    overflow: hidden;
+}
+.school .school-intr{
+    flex: 3;
+    padding: 5px 10px;
+}
+.school .school-intr>div{
+    padding: 5px 10px;
+    word-break: normal;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+.school .school-topic{
+    flex: 1;
+    padding: 5px 10px;
+    border-left:1px solid #cccccc;
+}
+.school .school-topic>li{
+    list-style: disc;
+    height: 20px;
+    line-height: 25px;
+    padding: 5px 10px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
