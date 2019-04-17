@@ -15,6 +15,13 @@
     color: white;
     cursor: pointer;
 }
+.header .set{
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin-top: 4px;
+    margin-left: 10px;
+}
 .header .exit{
     float: right;
     font-size: 14px;

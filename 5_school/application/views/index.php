@@ -1,5 +1,5 @@
-
 <?php $user = $this->session->userdata('user')?>
+<?php $user_work = $this->session->userdata('user_work')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +12,9 @@
 <body>
 <div class="wrapper">
     <div class="header">
+        <?php if(isset($user)){?>
+            <a href="welcome/<?php echo $user_work;?>_logined"><img class="set" src="images/set.png" alt=""></a>
+        <?php }?>
 
         <li class="main-memu now"><span id="index">首页</span></li>
         <?php if(!isset($user)){?>
@@ -46,6 +49,7 @@
 </div>
 
 <script src="js/jquery-1.12.4.js"></script>
+<script src="js/jquery-session.js"></script>
 <script>
     $('#index').on('click',function () {
         $.get('',{},function (data) {location.href = 'welcome/index'},'text')
@@ -61,13 +65,13 @@
     });
     $('#contact').on('click',function () {
         $.get('',{},function (data) {location.href = 'welcome/contact_us';},'text')
+    });
+
+    $('.set').on('click',function () {
+        var user = $.session.get('$user');
+        console.log(  user  );
+
     })
-
-    function showDetail(index) {
-        console.log(index);
-        console.log(111);
-
-    }
 </script>
 
 </body>

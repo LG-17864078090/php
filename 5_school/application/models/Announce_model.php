@@ -30,8 +30,12 @@ class Announce_model extends CI_Model
 
     //获取公告列表
     public function  get_announce_list(){
-        $query = $this->db->get('announces');
-        return $query->result();
+//        $query = $this->db->get('announces');
+//        return $query->result();
+        $sql = 'select * from announces order by announces.time desc';
+        $query = $this->db->query($sql);
+        return  $query->result();
+
     }
 
     //获取学校信息

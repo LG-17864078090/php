@@ -7,6 +7,7 @@ class user extends CI_Controller {
         parent::__construct();
         $this->load->model('User_model');
         $this->load->model('Announce_model');
+        $this->load->model('Course_model');
     }
 
 
@@ -152,6 +153,7 @@ class user extends CI_Controller {
             if($password == $user->password){
                 echo 'success';
                 $this->session->set_userdata('user',$user);
+                $this->session->set_userdata('user_work','student');
             }else{
                 echo 'password_error';
             }
@@ -170,6 +172,7 @@ class user extends CI_Controller {
             if($password == $user->password){
                 echo 'success';
                 $this->session->set_userdata('user',$user);
+                $this->session->set_userdata('user_work','parent');
             }else{
                 echo 'password_error';
             }
@@ -188,6 +191,7 @@ class user extends CI_Controller {
             if($password == $user->password){
                 echo 'success';
                 $this->session->set_userdata('user',$user);
+                $this->session->set_userdata('user_work','teacher');
             }else{
                 echo 'password_error';
             }
@@ -206,6 +210,7 @@ class user extends CI_Controller {
             if($password == $user->password){
                 echo 'success';
                 $this->session->set_userdata('user',$user);
+                $this->session->set_userdata('user_work','administrator');
             }else{
                 echo 'password_error';
             }
@@ -218,6 +223,7 @@ class user extends CI_Controller {
     public function logout(){
         //删除session数据
         $this->session->unset_userdata('user');
+        $this->session->unset_userdata('user_work');
         redirect('welcome/login');
     }
 
@@ -245,6 +251,44 @@ class user extends CI_Controller {
         $about = $this->input->get('about');
 
         $rows = $this->Announce_model->change_school_info($id,$intro,$about);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //管理员删除课程
+    public function delete_course($courseID){
+        $rows = $this->Course_model->delete_course_by_id($courseID);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //课号输入检查
+    public  function courseID_check(){
+        $courseID = $this->input->get('courseID');
+        $course = $this->Course_model->get_course_by_ID($courseID);
+        if($course){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //管理员添加课程
+    public function add_course(){
+        $courseID = $this->input->get('courseID');
+        $courseName = $this->input->get('courseName');
+        $classroomNum = $this->input->get('classroomNum');
+        $teacherID = $this->input->get('teacherID');
+        $startweek = $this->input->get('startweek');
+        $endweek = $this->input->get('endweek');
+
+        $rows = $this->Course_model->add_course($courseID,$courseName,$classroomNum,$teacherID,$startweek,$endweek);
         if(count($rows)>0){
             echo 'success';
         }else{

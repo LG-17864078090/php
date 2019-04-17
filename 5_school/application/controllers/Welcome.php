@@ -24,6 +24,7 @@ class Welcome extends CI_Controller {
         parent::__construct();
         $this->load->model('Announce_model');
         $this->load->model('User_model');
+        $this->load->model('Course_model');
     }
 
 
@@ -104,6 +105,15 @@ class Welcome extends CI_Controller {
     {
         $this->load->view('announcement');
     }
+    public function course_manage()//课程管理界面
+    {
+        $teacher_list = $this->User_model->get_teacher_list();
+        $course_list = $this->Course_model->get_course_list();
+        $this->load->view('course-manage',array(
+            'course_list' => $course_list,
+            'teacher_list' => $teacher_list
+        ));
+    }
     public function change_school_info()//改变学校信息界面
     {
         $school_info = $this->Announce_model->get_school_info();
@@ -116,7 +126,6 @@ class Welcome extends CI_Controller {
         $announce = $this->Announce_model->get_announce_by_id($announce_id);
         $announce_list = $this->Announce_model->get_announce_list();
         $admin = $this->User_model->get_admin_by_ID($announce->publisherID);
-
         $next = null;
         $prev = null;
         foreach ($announce_list as $index=>$announcement){
@@ -129,7 +138,6 @@ class Welcome extends CI_Controller {
                 }
             }
         }
-
         $this->load->view('announcement-detail',array(
             'prev' => $prev,
             'next' => $next,

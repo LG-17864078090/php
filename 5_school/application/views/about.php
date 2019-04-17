@@ -1,4 +1,5 @@
 <?php $user = $this->session->userdata('user')?>
+<?php $user_work = $this->session->userdata('user_work')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,10 @@
 <body>
 <div class="wrapper">
     <div class="header">
+        <?php if(isset($user)){?>
+            <a href="welcome/<?php echo $user_work;?>_logined"><img class="set" src="images/set.png" alt=""></a>
+        <?php }?>
+
         <li class="main-memu"><span id="index">首页</span></li>
         <?php if(!isset($user)){?>
             <li class="main-memu"><span id="reg">注册</span></li>

@@ -88,4 +88,10 @@ class User_model extends CI_Model
         return $query;
     }
 
+    //获取老师列表
+    public function  get_teacher_list(){
+        $query = $this->db->get('teachers');
+        return $query->result();
+    }
+
 }
