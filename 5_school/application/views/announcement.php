@@ -46,7 +46,8 @@
                     time:data
                 },function (data) {
                     if(data=='success'){
-                        console.log('发布成功')
+                        alert('发布成功');
+                        location.href = 'welcome/index'
                     }
                 },'text')
             }

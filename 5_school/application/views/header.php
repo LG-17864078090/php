@@ -1,6 +1,6 @@
 <?php $user = $this->session->userdata('user')?>
 <div class="header">
-    <a href="welcome/index"><img class="home" src="images/home.png" alt=""></a>
+    <a href="welcome/index"><img class="home" src="images/home.png" title="首页"></a>
 
 
     <?php if(isset($user)){?>
@@ -10,6 +10,8 @@
     <?php }else{?>
         <span>您当前为游客身份，前去  <a href="welcome/login">登录</a></span>
     <?php }?>
+    <img src="images/back.png" title="返回" class="back">
+    
 
 
 </div>
@@ -23,6 +25,13 @@
     .header{
         height: 30px;
         background: #ff6666;
+    }
+    .header .back{
+        width: 20px;
+        float: right;
+        margin-top: 4px;
+        margin-right: 10px;
+        cursor: pointer;
     }
 
     .header>span{
@@ -42,5 +51,8 @@
 
 <script src="js/jquery-1.12.4.js"></script>
 <script>
+    $('.back').on('click',function () {
+        window.history.back(1);
+    })
 
 </script>

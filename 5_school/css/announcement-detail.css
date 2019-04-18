@@ -3,9 +3,42 @@
     border: 1px solid #cccccc;
     overflow: hidden;
     padding-bottom: 10px;
+    display: flex;
+}
+.main .list{
+    flex: 2;
+    box-sizing: border-box;
+    padding-top: 75px;
+}
+.main .list>li{
+    padding-left: 20px;
+    font-size: 14px;
+    height: 20px;
+}
+.main .right{
+    flex: 2;
+}
+.main .list .list-item{
+    display: flex;
+}
+.main .list .list-item .list-title{
+    flex: 3;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.main .list .list-item .list-delete{
+    flex: 3;
+    font-size: 12px;
+    margin-right: 25px;
+    background: none;
+    border: none;
 }
 
+
 .main .container{
+    flex: 6;
     width: 50%;
     padding-top: 20px;
     margin: 0 auto;
@@ -32,6 +65,12 @@
 .main .container .title{
     text-align: center;
     flex: 1;
+}
+.main .container .content{
+    width: 100%;
+    white-space:normal;
+    word-break:break-all;
+    word-wrap:break-word;
 }
 .main .container .time{
     text-align: center;

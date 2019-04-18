@@ -28,6 +28,16 @@ class Announce_model extends CI_Model
 
     }
 
+    //删除公告
+    public function  delete_announce_by_id($announce_id){
+
+        $query = $this->db->delete('announces', array(
+            'id' => $announce_id
+        ));
+
+        return  $query;
+    }
+
     //获取公告列表
     public function  get_announce_list(){
 //        $query = $this->db->get('announces');

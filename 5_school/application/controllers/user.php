@@ -243,6 +243,17 @@ class user extends CI_Controller {
             echo 'fail';
         }
     }
+    //删除公告
+    public  function delete_announce(){
+        $announce_id = $this->input->get('announce_id');
+        $rows = $this->Announce_model->delete_announce_by_id($announce_id);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+
+    }
 
     //学校信息更改
     public function change_school_info(){

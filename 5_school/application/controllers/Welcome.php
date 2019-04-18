@@ -143,6 +143,7 @@ class Welcome extends CI_Controller {
             'next' => $next,
             'announce' => $announce,
             'admin' => $admin,
+            'announce_list' => $announce_list
         ));
     }
 

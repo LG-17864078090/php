@@ -50,11 +50,9 @@ class Course_model extends CI_Model
 
     //删除课程
     public function  delete_course_by_id($courseID){
-
         $query = $this->db->delete('course', array(
             'courseID' => $courseID
         ));
-
         return  $query;
     }
 
