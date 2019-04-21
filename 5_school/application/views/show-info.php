@@ -12,20 +12,37 @@
     <?php include 'header.php'?>
     <div class="main">
         <div class="info">
-            <span class="tip">学号:</span><br>
+            <h3>基本信息</h3>
+            <table>
+                <tr>
+                    <td>学号:</td>
+                    <td><?php echo $student->studentID?></td>
+                </tr>
+                <tr>
+                    <td>姓名:</td>
+                    <td><?php echo $student->name?></td>
+                </tr>
+                <tr>
+                    <td>性别:</td>
+                    <td><?php echo $student->sex?></td>
+                </tr>
+                <tr>
+                    <td>班主任:</td>
+                    <td><?php echo $teacher->name?></td>
+                </tr>
+                <tr>
+                    <td>手机号:</td>
+                    <td><?php echo $student->phone?></td>
+                </tr>
+                <tr>
+                    <td>家庭住址:</td>
+                    <td><?php echo $student->address?></td>
+                </tr>
 
-            <span class="tip">姓名:</span><br>
-
-            <span class="tip">性别:</span><br>
-
-            <span class="tip">班主任:</span><br>
-
-            <span class="tip">手机号:</span><br>
-
-            <span class="tip">家庭住址:</span><br>
+            </table>
 
             <div class="change-info">
-                <a href="">信息更改</a>
+                <button>信息更改</button>
             </div>
 
 

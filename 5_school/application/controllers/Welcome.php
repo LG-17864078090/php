@@ -91,7 +91,13 @@ class Welcome extends CI_Controller {
     }
     public function show_info()//学生显示信息界面
     {
-        $this->load->view('show-info');
+        $user = $this->session->user;
+        $student = $this->User_model->get_student_by_ID($user->studentID);
+        $teacher = $this->User_model->get_teacher_by_ID($user->teacherID);
+        $this->load->view('show-info',array(
+            'student' => $student,
+            'teacher' => $teacher
+        ));
     }
     public function feedback()//问题反馈界面
     {

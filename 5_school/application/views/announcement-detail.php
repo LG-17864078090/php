@@ -64,7 +64,7 @@
                     <?php }?>
 
                 }else{
-                    location.href = 'welcome/announcement_detail/<?php echo $announce->id?>';
+                    location.reload();
                 }
 
 

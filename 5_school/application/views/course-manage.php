@@ -20,6 +20,7 @@
                         <td>课程编号</td>
                         <td>上课地点</td>
                         <td>授课老师</td>
+                        <td>节次</td>
                         <td>上课时间</td>
                         <td class="final-td">操作</td>
                     </tr>
@@ -30,6 +31,7 @@
                             <td><?php echo $course->courseID?></td>
                             <td><?php echo $course->classroomNum?></td>
                             <td><?php echo $course->name?></td>
+                            <td><?php echo $course->starttime?> - <?php echo $course->starttime+1?>节 </td>
                             <td><?php echo $course->startweek?> - <?php echo $course->endweek?>周</td>
                             <td class="final-td"><button class="deleteCourse">删除</button></td>
                         </tr>
@@ -39,12 +41,22 @@
                         <td><input type="text" class="courseName"></td>
                         <td><input type="number" class="courseID"></td>
                         <td><input type="text" class="classroomNum"></td>
-<!--                        <td><input type="text" class="teacherID"></td>-->
+
                         <td>
                             <select name="" id="teacherID">
                                 <?php foreach ($teacher_list as $teacher){?>
                                     <option value="<?php echo $teacher->teacherID?>"><?php echo $teacher->name?></option>
                                 <?php }?>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="" id="starttime">
+
+                                    <option value="1">1-2节</option>
+                                    <option value="3">3-4节</option>
+                                    <option value="5">5-6节</option>
+                                    <option value="7">7-8节</option>
+                                    <option value="9">9-10节</option>
 
                             </select>
                         </td>
@@ -84,6 +96,7 @@
             var courseID = $('.courseID').val();
             var classroomNum = $('.classroomNum').val();
             var teacherID = $('#teacherID').val();
+            var starttime = $('#starttime').val();
             var startweek = $('.startweek').val();
             var endweek = $('.endweek').val();
             if(courseID == ''){
@@ -105,6 +118,7 @@
                             courseID:courseID,
                             classroomNum:classroomNum,
                             teacherID:teacherID,
+                            starttime:starttime,
                             startweek:startweek,
                             endweek:endweek
 

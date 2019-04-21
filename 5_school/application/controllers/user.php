@@ -296,10 +296,11 @@ class user extends CI_Controller {
         $courseName = $this->input->get('courseName');
         $classroomNum = $this->input->get('classroomNum');
         $teacherID = $this->input->get('teacherID');
+        $starttime = $this->input->get('starttime');
         $startweek = $this->input->get('startweek');
         $endweek = $this->input->get('endweek');
 
-        $rows = $this->Course_model->add_course($courseID,$courseName,$classroomNum,$teacherID,$startweek,$endweek);
+        $rows = $this->Course_model->add_course($courseID,$courseName,$classroomNum,$teacherID,$startweek,$endweek,$starttime);
         if(count($rows)>0){
             echo 'success';
         }else{

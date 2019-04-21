@@ -30,8 +30,9 @@
     </div>
     <div class="school">
         <div class="school-intr">
+            <?php include 'index_show_img.php'?>
             <h3>学校简介</h3>
-            <div>
+            <div class="shcool-intro" style="padding: 0 10px 10px">
                 <?php echo $school_info->intro?>
             </div>
         </div>

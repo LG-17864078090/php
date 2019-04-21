@@ -8,6 +8,7 @@
 .main .list{
     flex: 2;
     box-sizing: border-box;
+    overflow: hidden;
     padding-top: 75px;
 }
 .main .list>li{
