@@ -17,11 +17,12 @@
 
         <div class="operating" id="info">个人信息查询</div>
         <div class="operating" id="grade">个人成绩查询</div>
+        <div class="operating" id="chooseCourse">选课</div>
         <div class="operating" id="feedback">信息反馈</div>
 
     </div>
 
-    <div class="footer">© 学生学情管理系统</div>
+    <?php include 'footer.php'?>
 
 </div>
 <script src="js/jquery-1.12.4.js"></script>

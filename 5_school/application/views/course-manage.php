@@ -71,7 +71,7 @@
                 <button class="addButton">添加课程</button>
             </div>
         </div>
-        <div class="footer">© 学生学情管理系统</div>
+        <?php include 'footer.php'?>
     </div>
 
     <script src="js/jquery-1.12.4.js"></script>

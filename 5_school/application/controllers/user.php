@@ -28,7 +28,6 @@ class user extends CI_Controller {
         $ID = $this->input->get('ID');
         $rows = $this->User_model->get_parent_by_ID($ID);
         if($rows){
-            //在AJAX中 输出的东西即可在AJAx回调函数中获取
             echo 'fail';
         }else{
             echo 'success';
@@ -40,7 +39,6 @@ class user extends CI_Controller {
         $ID = $this->input->get('ID');
         $rows = $this->User_model->get_teacher_by_ID($ID);
         if($rows){
-            //在AJAX中 输出的东西即可在AJAx回调函数中获取
             echo 'fail';
         }else{
             echo 'success';
@@ -77,6 +75,20 @@ class user extends CI_Controller {
         }
     }
 
+    //学生信息更改
+    public function update_student_info(){
+        $studentID = $this->input->get('studentID');
+        $phone = $this->input->get('phone');
+        $address = $this->input->get('address');
+
+        $rows = $this->User_model->update_student_info($studentID,$phone,$address);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
     //存储家长信息
     public function save_parent_massage(){
         $childID = $this->input->get('childID');
@@ -86,7 +98,6 @@ class user extends CI_Controller {
         $phone = $this->input->get('phone');
         $address = $this->input->get('address');
         $teacherID = $this->input->get('teacherID');
-
         $rows = $this->User_model->get_parent_by_ID($childID);
 
         //后台验证
@@ -134,6 +145,7 @@ class user extends CI_Controller {
                 $user = $this->User_model->get_teacher_by_ID($teacherID);
                 if($user){
                     $this->session->set_userdata('user',$user);
+                    $this->session->set_userdata('user_work','teacher');
                 }
                 echo 'success';
             }else{

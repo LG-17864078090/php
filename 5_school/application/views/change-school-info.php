@@ -22,7 +22,7 @@
             </div>
 
         </div>
-        <div class="footer">© 学生学情管理系统</div>
+        <?php include 'footer.php'?>
 
     </div>
 

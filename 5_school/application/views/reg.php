@@ -24,7 +24,7 @@
                 <input name="work" type="radio" value="学生"><span>学生</span>
                 <input name="work" type="radio" value="家长"><span>家长</span>
                 <input name="work" type="radio" value="老师"><span>老师</span>
-                <input name="work" type="radio" value="管理员"><span>管理员</span>
+<!--                <input name="work" type="radio" value="管理员"><span>管理员</span>-->
             </div>
 
 
@@ -64,7 +64,7 @@
     </div>
 
 
-    <div class="footer">© 学生学情管理系统</div>
+    <?php include 'footer.php'?>
 
 </div>
 <script src="js/jquery-1.12.4.js"></script>

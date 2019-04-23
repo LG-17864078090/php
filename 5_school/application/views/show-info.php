@@ -32,30 +32,64 @@
                 </tr>
                 <tr>
                     <td>手机号:</td>
-                    <td><?php echo $student->phone?></td>
+<!--                    <td>--><?php //echo $student->phone?><!--</td>-->
+                    <td><input type="text" class="input phone" disabled="disabled"  value="<?php echo $student->phone?>"></td>
                 </tr>
                 <tr>
                     <td>家庭住址:</td>
-                    <td><?php echo $student->address?></td>
+                    <td><input type="text" class="input address" disabled="disabled" value="<?php echo $student->address?>"></td>
                 </tr>
 
             </table>
 
             <div class="change-info">
-                <button>信息更改</button>
+                <button class="change">信息更改</button><br>
+                <button class="saveInfo">保存</button>
             </div>
-
-
         </div>
-
-
-
-
     </div>
 
-    <div class="footer">© 学生学情管理系统</div>
+    <?php include 'footer.php'?>
 
 </div>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+    $('.change').on('click',function () {
+        $('.input').attr('disabled',false);
+        $('.saveInfo').show();
+    });
+
+
+    $('.saveInfo').on('click',function () {
+        var newPhone = $('.phone').val();
+        var newAddress = $('.address').val();
+        var flag = true;
+        var nowStudentID = <?php echo $user->studentID?>;
+
+        // console.log(newPhone,newAddress);
+        if(!(/^1(3|4|5|7|8)\d{9}$/.test(newPhone))){
+            flag = false;
+            alert('手机号格式有误');
+        }else if(newAddress == ''){
+            flag = false;
+            alert('地址不能为空');
+        }
+
+        if(flag){
+            $.get('user/update_student_info',{
+                studentID:nowStudentID,
+                phone:newPhone,
+                address:newAddress
+            },function (data) {
+                if(data == 'success'){
+                    location.reload();
+                }
+
+            },'text')
+        }
+
+    })
+</script>
 
 
 </body>

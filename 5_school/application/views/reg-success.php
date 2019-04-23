@@ -24,7 +24,7 @@
             <h3>您的注册信息已提交，请联系辅助教师进行验证</h3>
         </div>
     </div>
-    <div class="footer">© 学生学情管理系统</div>
+    <?php include 'footer.php'?>
 
 </div>
 

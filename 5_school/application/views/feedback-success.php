@@ -16,7 +16,7 @@
             <h3>您的反馈已提交，我们会尽快处理</h3>
         </div>
     </div>
-    <div class="footer">© 学生学情管理系统</div>
+    <?php include 'footer.php'?>
 
 </div>
 

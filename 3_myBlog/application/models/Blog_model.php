@@ -37,6 +37,8 @@ class Blog_model extends CI_Model
         order by t_blog.post_time desc";
         $query = $this->db->query($sql);
         return  $query->result();
+
+
     }
 
     //通过用户id获取他的博客

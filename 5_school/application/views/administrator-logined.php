@@ -19,7 +19,7 @@
         <div class="operating"><a href="welcome/change_school_info">学校信息修改</a></div>
     </div>
 
-    <div class="footer">© 学生学情管理系统</div>
+    <?php include 'footer.php'?>
 
 </div>
 
