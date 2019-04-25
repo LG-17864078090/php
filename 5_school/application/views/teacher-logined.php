@@ -11,13 +11,11 @@
 <div class="wrapper">
     <?php include 'header.php'?>
     <div class="main">
-        <div class="operating">用户信息查询</div>
-        <div class="operating">辅助学生注册</div>
-        <div class="operating">辅助家长注册</div>
-        <div class="operating">个人信息更改</div>
-        <div class="operating">我的课程</div>
-        <div class="operating">问题反馈</div>
-
+        <div class="operating"><a href="welcome/show_teacher_info">个人信息查询</a></div>
+        <div class="operating"><a href="welcome/help_reg">辅助注册</a></div>
+        <div class="operating"><a href="">我的课程</a></div>
+        <div class="operating"><a href="">我的学生</a></div>
+        <div class="operating"><a href="welcome/feedback">问题反馈</a></div>
 
     </div>
 

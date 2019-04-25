@@ -16,15 +16,12 @@
     cursor: pointer;
     background: #cccccc;
 }
-.footer {
-    margin-top:20px;
-    padding-bottom:50px;
-    height:38px;
-    line-height:38px;
-    border-top:2px solid #CCCCCC;
-    color:#737573;
-    text-align:center;
+.main .operating>a{
+    text-decoration:none;
+    out-line: none;
+    color: black;
 }
+
 .main .search{
     margin-top: 20px;
 text-align: center;

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-04-23 22:11:31
+Date: 2019-04-25 09:05:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -71,20 +71,39 @@ CREATE TABLE `course` (
   `startweek` int(2) DEFAULT NULL,
   `endweek` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`,`courseID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of course
 -- ----------------------------
-INSERT INTO `course` VALUES ('4', '453', '语文', '1996', '563', '1', '3', '9');
 INSERT INTO `course` VALUES ('6', '654', 'vb', '1997', '543', '1', '1', '3');
 INSERT INTO `course` VALUES ('7', '2432', 'java', '1995', '989', '1', '10', '14');
-INSERT INTO `course` VALUES ('8', '4534', 'js', '1994', '643', '3', '4', '5');
 INSERT INTO `course` VALUES ('9', '4531', '操作系统', '1994', '65', '3', '3', '4');
 INSERT INTO `course` VALUES ('10', '3453', '高数', '1997', '789', '5', '1', '6');
 INSERT INTO `course` VALUES ('11', '4532', 'j2ee', '1994', '32', '3', '1', '4');
-INSERT INTO `course` VALUES ('12', '9999', '思修', '12345678', '99', '1', '1', '2');
-INSERT INTO `course` VALUES ('13', '777', 'c', '12', '98', '1', '6', '7');
+INSERT INTO `course` VALUES ('14', '6789', '.net', '123', '2342', '7', '5', '8');
+INSERT INTO `course` VALUES ('15', '3421', '语文', '1234567', '675', '9', '6', '9');
+
+-- ----------------------------
+-- Table structure for feedback
+-- ----------------------------
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE `feedback` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `problem` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
+  `feedbackerID` int(20) NOT NULL,
+  `feedbackerWork` varchar(15) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of feedback
+-- ----------------------------
+INSERT INTO `feedback` VALUES ('33', '啦啦啦啦啦', '20162838', 'parent', '2019-04-24 04:14:21');
+INSERT INTO `feedback` VALUES ('34', '啧啧啧', '20162838', 'student', '2019-04-24 04:15:04');
+INSERT INTO `feedback` VALUES ('35', '我是老师反馈', '1997', 'teacher', '2019-04-25 08:23:35');
+INSERT INTO `feedback` VALUES ('36', '学生反馈', '20162838', 'student', '2019-04-25 08:25:18');
 
 -- ----------------------------
 -- Table structure for grade
@@ -92,15 +111,19 @@ INSERT INTO `course` VALUES ('13', '777', 'c', '12', '98', '1', '6', '7');
 DROP TABLE IF EXISTS `grade`;
 CREATE TABLE `grade` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `studentID` int(20) NOT NULL,
-  `courseID` int(20) NOT NULL,
-  `grade` int(5) DEFAULT NULL,
+  `sID` int(20) NOT NULL,
+  `cID` int(20) NOT NULL,
+  `grade` int(5) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of grade
 -- ----------------------------
+INSERT INTO `grade` VALUES ('4', '20162838', '654', '0');
+INSERT INTO `grade` VALUES ('8', '20160472', '3453', '0');
+INSERT INTO `grade` VALUES ('9', '20160472', '453', '0');
+INSERT INTO `grade` VALUES ('10', '20162838', '2432', '0');
 
 -- ----------------------------
 -- Table structure for parents
@@ -117,11 +140,12 @@ CREATE TABLE `parents` (
   `teacherID` int(20) DEFAULT NULL,
   `exist` int(2) NOT NULL DEFAULT '0' COMMENT '0未注册，1已注册',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of parents
 -- ----------------------------
+INSERT INTO `parents` VALUES ('1', '20162838', 'liguan', 'LG家长', '男', '13954027535', '哈尔滨南岗家长', '1997', '1');
 
 -- ----------------------------
 -- Table structure for school_info
@@ -154,15 +178,14 @@ CREATE TABLE `students` (
   `teacherID` int(20) DEFAULT NULL,
   `exist` int(2) NOT NULL DEFAULT '0' COMMENT '0未注册，1已注册',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of students
 -- ----------------------------
-INSERT INTO `students` VALUES ('1', '20162838', 'liguan', '李冠', '男', '13954027545', '哈尔滨啦啦', '1997', '1');
 INSERT INTO `students` VALUES ('2', '20160472', 'wuxi', '吴玺', '男', '13111111111', '哈尔滨', '1994', '1');
-INSERT INTO `students` VALUES ('3', '20160473', 'wuxi', '小吴', '男', '13636117890', '黑龙江', '1994', '0');
 INSERT INTO `students` VALUES ('4', '20162234', 'wuxi', '吴玺玺', '男', '15545992557', '哈尔滨', '1995', '0');
+INSERT INTO `students` VALUES ('5', '20162838', '??', '学生李冠', '男', '13954027535', '黑龙江大学', '1997', '1');
 
 -- ----------------------------
 -- Table structure for teachers
@@ -182,7 +205,7 @@ CREATE TABLE `teachers` (
 -- ----------------------------
 -- Records of teachers
 -- ----------------------------
-INSERT INTO `teachers` VALUES ('1', '1997', '123', 'LG', '男', '13954027535', '哈尔滨');
+INSERT INTO `teachers` VALUES ('1', '1997', '123', 'LG', '男', '13954027515', '哈尔滨老师');
 INSERT INTO `teachers` VALUES ('2', '1996', '123', 'll', '男', '13954027535', 'sasavs');
 INSERT INTO `teachers` VALUES ('3', '1995', 'asas', 'asas', '男', '13111111111', '11111');
 INSERT INTO `teachers` VALUES ('4', '1994', '123', 'ttt', '男', '13111111111', '11');

@@ -76,33 +76,6 @@ class user extends CI_Controller {
         }
     }
 
-    //学生信息更改
-    public function update_student_info(){
-        $studentID = $this->input->get('studentID');
-        $phone = $this->input->get('phone');
-        $address = $this->input->get('address');
-
-        $rows = $this->User_model->update_student_info($studentID,$phone,$address);
-        if(count($rows)>0){
-            echo 'success';
-        }else{
-            echo 'fail';
-        }
-    }
-
-    //家长信息更改
-    public function update_parent_info(){
-        $parentID = $this->input->get('parentID');
-        $phone = $this->input->get('phone');
-        $address = $this->input->get('address');
-
-        $rows = $this->User_model->update_parent_info($parentID,$phone,$address);
-        if(count($rows)>0){
-            echo 'success';
-        }else{
-            echo 'fail';
-        }
-    }
 
     //存储家长信息
     public function save_parent_massage(){
@@ -168,6 +141,49 @@ class user extends CI_Controller {
             }
         }
     }
+
+    //学生信息更改
+    public function update_student_info(){
+        $studentID = $this->input->get('studentID');
+        $phone = $this->input->get('phone');
+        $address = $this->input->get('address');
+
+        $rows = $this->User_model->update_student_info($studentID,$phone,$address);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //家长信息更改
+    public function update_parent_info(){
+        $parentID = $this->input->get('parentID');
+        $phone = $this->input->get('phone');
+        $address = $this->input->get('address');
+
+        $rows = $this->User_model->update_parent_info($parentID,$phone,$address);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //老师信息更改
+    public function update_teacher_info(){
+        $teacherID = $this->input->get('teacherID');
+        $phone = $this->input->get('phone');
+        $address = $this->input->get('address');
+
+        $rows = $this->User_model->update_teacher_info($teacherID,$phone,$address);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
 
 
     //学生登陆检查
@@ -400,8 +416,29 @@ class user extends CI_Controller {
     }
 
 
+    //帮助学生注册
+    public function help_student(){
+        $studentID = $this->input->get('studentID');
+        $row = $this->User_model->help_student_reg($studentID);
+        if($row){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
 
+    }
 
+    //帮助家长注册
+    public function help_parent(){
+        $parentID = $this->input->get('parentID');
+        $row = $this->User_model->help_parent_reg($parentID);
+        if($row){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+
+    }
 
 
 

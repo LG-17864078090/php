@@ -15,37 +15,25 @@
             <h3>基本信息</h3>
             <table>
                 <tr>
-                    <td>帐号:</td>
-                    <td><?php echo $parent->childID?></td>
+                    <td>工号:</td>
+                    <td><?php echo $teacher->teacherID?></td>
                 </tr>
                 <tr>
                     <td>姓名:</td>
-                    <td><?php echo $parent->name?></td>
-                </tr>
-                <tr>
-                    <td>孩子姓名:</td>
-                    <td><?php if(isset($student)){
-                            echo $student->name;
-                        }else{
-                            echo '您的孩子还未注册';
-                        }?></td>
-                </tr>
-                <tr>
-                    <td>性别:</td>
-                    <td><?php echo $parent->sex?></td>
-                </tr>
-                <tr>
-                    <td>班主任:</td>
                     <td><?php echo $teacher->name?></td>
                 </tr>
                 <tr>
+                    <td>性别:</td>
+                    <td><?php echo $teacher->sex?></td>
+                </tr>
+
+                <tr>
                     <td>手机号:</td>
-<!--                    <td>--><?php //echo $student->phone?><!--</td>-->
-                    <td><input type="text" class="input phone" disabled="disabled"  value="<?php echo $parent->phone?>"></td>
+                    <td><input type="text" class="input phone" disabled="disabled"  value="<?php echo $teacher->phone?>"></td>
                 </tr>
                 <tr>
                     <td>家庭住址:</td>
-                    <td><input type="text" class="input address" disabled="disabled" value="<?php echo $parent->address?>"></td>
+                    <td><input type="text" class="input address" disabled="disabled" value="<?php echo $teacher->address?>"></td>
                 </tr>
 
             </table>
@@ -72,7 +60,7 @@
         var newPhone = $('.phone').val();
         var newAddress = $('.address').val();
         var flag = true;
-        var nowParentID = <?php echo $user->childID?>;
+        var nowTeacherID = <?php echo $user->teacherID?>;
 
         // console.log(newPhone,newAddress);
         if(!(/^1(3|4|5|7|8)\d{9}$/.test(newPhone))){
@@ -84,8 +72,8 @@
         }
 
         if(flag){
-            $.get('user/update_parent_info',{
-                parentID:nowParentID,
+            $.get('user/update_teacher_info',{
+                teacherID:nowTeacherID,
                 phone:newPhone,
                 address:newAddress
             },function (data) {

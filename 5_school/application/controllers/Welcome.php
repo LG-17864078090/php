@@ -95,7 +95,7 @@ class Welcome extends CI_Controller {
         ));
     }
 
-    public function show_child_grade()//家长显示成绩界面
+    public function show_child_grade()//家长显示学生成绩界面
     {
         $user = $this->session->user;
         $grade_list = $this->Course_model->get_student_grade($user->childID);
@@ -114,7 +114,7 @@ class Welcome extends CI_Controller {
             'my_course_list' => $my_course_list,
         ));
     }
-    public function show_student_info()//学生显示信息界面
+    public function show_student_info()//学生显示个人信息界面
     {
         $user = $this->session->user;
         $student = $this->User_model->get_student_by_ID($user->studentID);
@@ -124,16 +124,27 @@ class Welcome extends CI_Controller {
             'teacher' => $teacher
         ));
     }
-    public function show_parent_info()//家长显示信息界面
+
+    public function show_parent_info()//家长显示个人信息界面
     {
         $user = $this->session->user;
-        $student = $this->User_model->get_student_by_ID($user->childID);
-        $teacher = $this->User_model->get_teacher_by_ID($user->teacherID);
         $parent = $this->User_model->get_parent_by_ID($user->childID);
+        $child = $this->User_model->get_student_by_ID($user->childID);
+        $teacher = $this->User_model->get_teacher_by_ID($user->teacherID);
         $this->load->view('show-parent-info',array(
-            'student' => $student,
+            'parent' => $parent,
             'teacher' => $teacher,
-            'parent' => $parent
+            'student' => $child
+        ));
+    }
+
+
+    public function show_teacher_info()//老师显示个人信息界面
+    {
+        $user = $this->session->user;
+        $teacher = $this->User_model->get_teacher_by_ID($user->teacherID);
+        $this->load->view('show-teacher-info',array(
+            'teacher' => $teacher,
         ));
     }
 
@@ -156,6 +167,19 @@ class Welcome extends CI_Controller {
         $this->load->view('course-manage',array(
             'course_list' => $course_list,
             'teacher_list' => $teacher_list
+        ));
+    }
+
+    public function help_reg()//辅助注册界面
+    {
+        $user = $this->session->user;
+        $teacherID = $user->teacherID;
+        $student_reg_list = $this->User_model->get_student_reg_list($teacherID);
+        $parent_reg_list = $this->User_model->get_parent_reg_list($teacherID);
+
+        $this->load->view('help-reg',array(
+            'student_reg_list' => $student_reg_list,
+            'parent_reg_list' => $parent_reg_list
         ));
     }
     public function change_school_info()//改变学校信息界面
