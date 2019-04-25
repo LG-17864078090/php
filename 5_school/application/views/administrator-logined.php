@@ -15,7 +15,7 @@
         <div class="operating"><a href="welcome/announcement">公告发布</a></div>
 
         <div class="operating"><a href="welcome/course_manage">课程管理</a></div>
-        <div class="operating">教学资源分配</div>
+
         <div class="operating"><a href="welcome/change_school_info">学校信息修改</a></div>
     </div>
 

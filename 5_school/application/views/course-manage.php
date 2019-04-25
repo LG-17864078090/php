@@ -33,7 +33,7 @@
                             <td><?php echo $course->name?></td>
                             <td><?php echo $course->starttime?> - <?php echo $course->starttime+1?>节 </td>
                             <td><?php echo $course->startweek?> - <?php echo $course->endweek?>周</td>
-                            <td class="final-td"><button class="deleteCourse">删除</button></td>
+                            <td class="final-td"><button onclick="deleteCourse(<?php echo $course->courseID?>)" >删除</button></td>
                         </tr>
                     <?php }?>
 
@@ -66,7 +66,7 @@
                 </table>
 
 
-                <p class="total">已找到共 <?php echo $course->num?> 条课程</p>
+                <p class="total">已找到共 <?php echo count($course_list)?> 条课程</p>
 
                 <button class="addButton">添加课程</button>
             </div>
@@ -76,19 +76,34 @@
 
     <script src="js/jquery-1.12.4.js"></script>
     <script>
-        $('.addButton').on('click',function () {;
+        $('.addButton').on('click',function () {
             $('.add').css({"display":"flex"});
         });
-        $('.deleteCourse').on('click',function () {;
-            $.get('user/delete_course/<?php echo $course->courseID?>',{
+
+        function deleteCourse(courseID){
+            $.get('user/delete_course',{
+                courseID:courseID
             },function (data) {
                 if(data == 'success'){
+                    alert('删除成功！');
                     location.href = 'welcome/course_manage';
                 }else if(data == 'fail'){
-                    alert('删除失败');
+                    alert('删除失败！');
                 }
             },'text')
-        });
+
+        }
+        //$('.deleteCourse').on('click',function () {
+        //
+        //    //$.get('user/delete_course/<?php ////echo $course->courseID?>////',{
+        //    //},function (data) {
+        //    //    if(data == 'success'){
+        //    //        location.href = 'welcome/course_manage';
+        //    //    }else if(data == 'fail'){
+        //    //        alert('删除失败');
+        //    //    }
+        //    //},'text')
+        //});
 
         $('.saveCourse').on('click',function () {
             var flag = true;
@@ -101,17 +116,17 @@
             var endweek = $('.endweek').val();
             if(courseID == ''){
                 flag = false;
-                alert('请输入课程编号');
+                alert('请输入课程编号！');
             }else if(startweek>endweek){
                 flag = false;
-                alert('上课周数有误');
+                alert('上课周数有误！');
             }
             if(flag){
                 $.get('user/courseID_check',{
                     courseID:courseID
                 },function (data) {
                     if(data =='success'){
-                        alert('该课号已存在')
+                        alert('该课号已存在！')
                     }else if(data == 'fail'){
                         $.get('user/add_course',{
                             courseName:courseName,
@@ -124,6 +139,7 @@
 
                         },function (data) {
                             if(data == 'success'){
+                                alert('添加成功！');
                                 location.href = 'welcome/course_manage';
                             }
                         },'text')

@@ -24,6 +24,7 @@ class Welcome extends CI_Controller {
         parent::__construct();
         $this->load->model('Announce_model');
         $this->load->model('User_model');
+        $this->load->model('Feedback_model');
         $this->load->model('Course_model');
     }
 
@@ -85,20 +86,57 @@ class Welcome extends CI_Controller {
     {
         $this->load->view('administrator-logined');
     }
-    public function show_course()//学生显示课程界面
+    public function show_student_grade()//学生显示成绩界面
     {
-        $this->load->view('show-course');
+        $user = $this->session->user;
+        $grade_list = $this->Course_model->get_student_grade($user->studentID);
+        $this->load->view('show-student-grade',array(
+            'grade_list' => $grade_list
+        ));
     }
-    public function show_info()//学生显示信息界面
+
+    public function show_child_grade()//家长显示成绩界面
+    {
+        $user = $this->session->user;
+        $grade_list = $this->Course_model->get_student_grade($user->childID);
+
+        $this->load->view('show-child-grade',array(
+            'grade_list' => $grade_list
+        ));
+    }
+    public function choose_course()//学生选课界面
+    {
+        $user = $this->session->user;
+        $my_course_list = $this->Course_model->get_student_course_list_by_studentID($user->studentID);
+        $course_list = $this->Course_model->get_course_list();
+        $this->load->view('choose-course',array(
+            'course_list' => $course_list,
+            'my_course_list' => $my_course_list,
+        ));
+    }
+    public function show_student_info()//学生显示信息界面
     {
         $user = $this->session->user;
         $student = $this->User_model->get_student_by_ID($user->studentID);
         $teacher = $this->User_model->get_teacher_by_ID($user->teacherID);
-        $this->load->view('show-info',array(
+        $this->load->view('show-student-info',array(
             'student' => $student,
             'teacher' => $teacher
         ));
     }
+    public function show_parent_info()//家长显示信息界面
+    {
+        $user = $this->session->user;
+        $student = $this->User_model->get_student_by_ID($user->childID);
+        $teacher = $this->User_model->get_teacher_by_ID($user->teacherID);
+        $parent = $this->User_model->get_parent_by_ID($user->childID);
+        $this->load->view('show-parent-info',array(
+            'student' => $student,
+            'teacher' => $teacher,
+            'parent' => $parent
+        ));
+    }
+
     public function feedback()//问题反馈界面
     {
         $this->load->view('feedback');

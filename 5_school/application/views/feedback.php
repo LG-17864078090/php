@@ -14,15 +14,8 @@
         <div class="container">
             <h4>问题描述</h4>
             <textarea name="" id="problem" cols="60" rows="10"></textarea>
-
-            <h4>联系方式</h4>
-            <input type="text" id="contact-way"><br>
-
             <button class="submit" id="submitButton">提交该问题</button>
-
         </div>
-
-
     </div>
 
     <?php include 'footer.php'?>
@@ -31,7 +24,25 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
     $('#submitButton').on('click',function () {
-        $.get('', {},function (data) {location.href = 'welcome/feedback_success';},'text')
+
+        var problem = $('#problem').val();
+        var data = new Date().toLocaleString().replace(/[\u4e00-\u9fa5]/g,'');
+        if(problem != ''){
+            $.get('user/feedback', {
+                problem:problem,
+                time:data
+            },function (data) {
+                if(data == 'success'){
+                    location.href = 'welcome/feedback_success';
+                }
+
+            },'text')
+        }else{
+            alert('请输入问题描述！');
+        }
+
+
+
     })
 </script>
 

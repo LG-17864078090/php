@@ -8,6 +8,7 @@ class user extends CI_Controller {
         $this->load->model('User_model');
         $this->load->model('Announce_model');
         $this->load->model('Course_model');
+        $this->load->model('Feedback_model');
     }
 
 
@@ -82,6 +83,20 @@ class user extends CI_Controller {
         $address = $this->input->get('address');
 
         $rows = $this->User_model->update_student_info($studentID,$phone,$address);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //家长信息更改
+    public function update_parent_info(){
+        $parentID = $this->input->get('parentID');
+        $phone = $this->input->get('phone');
+        $address = $this->input->get('address');
+
+        $rows = $this->User_model->update_parent_info($parentID,$phone,$address);
         if(count($rows)>0){
             echo 'success';
         }else{
@@ -282,7 +297,8 @@ class user extends CI_Controller {
     }
 
     //管理员删除课程
-    public function delete_course($courseID){
+    public function delete_course(){
+        $courseID = $this->input->get('courseID');
         $rows = $this->Course_model->delete_course_by_id($courseID);
         if(count($rows)>0){
             echo 'success';
@@ -319,6 +335,70 @@ class user extends CI_Controller {
             echo 'fail';
         }
     }
+
+    //学生选课
+    public function choose_course(){
+        $courseID = $this->input->get('courseID');
+        $studentID = $this->input->get('studentID');
+
+        $rows = $this->Course_model->choose_course($courseID,$studentID);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //学生退选课程
+    public function cancel_choose_course(){
+        $courseID = $this->input->get('courseID');
+        $studentID = $this->input->get('studentID');
+        $rows = $this->Course_model->cancel_choose_course($courseID,$studentID);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //问题反馈
+    public function feedback(){
+
+        $problem = $this->input->get('problem');
+        $time = $this->input->get('time');
+        $user = $this->session->user;
+        $work = $this->session->user_work;
+        if($work == 'student'){
+            $feedbackerID = $user->studentID;
+        }elseif ($work == 'parent'){
+            $feedbackerID = $user->childID;
+        }elseif ($work == 'teacher'){
+            $feedbackerID = $user->teacherID;
+        }
+
+        $rows = $this->Feedback_model->save_feedback($problem,$feedbackerID,$time,$work);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+
+
+    //检查是否已选该课程
+    public function check_choose(){
+        $courseID = $this->input->get('courseID');
+        $studentID = $this->input->get('studentID');
+        $course = $this->Course_model->check_choose($courseID,$studentID);
+        if($course){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+
+    }
+
 
 
 

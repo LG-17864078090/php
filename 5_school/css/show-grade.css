@@ -1,0 +1,21 @@
+
+.main{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 30px 0;
+}
+.main .course{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+table{
+    margin: 0 auto;
+}
+tr{
+    height: 25px;
+}
+td{
+    width: 100px;
+}
+

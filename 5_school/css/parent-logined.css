@@ -12,6 +12,12 @@
     text-align: center;
     font-size: 18px;
 }
+.main .operating>a{
+    text-decoration:none;
+    out-line: none;
+    color: black;
+}
+
 .main .operating:hover{
     cursor: pointer;
     background: #cccccc;

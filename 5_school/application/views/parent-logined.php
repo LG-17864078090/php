@@ -15,29 +15,14 @@
             <input type="text" placeholder="在公告中查询你想要的通知"><button>搜索</button>
         </div>
 
-        <div class="operating" id="info">个人信息查询</div>
-        <div class="operating" id="grade">个人成绩查询</div>
-        <div class="operating" id="feedback">信息反馈</div>
+        <div class="operating" id="info"><a href="welcome/show_parent_info">个人信息查询</a></div>
+        <div class="operating" id="grade"><a href="welcome/show_child_grade">学生成绩查询</a></div>
+        <div class="operating" id="feedback"><a href="welcome/feedback">信息反馈</a></div>
 
     </div>
 
     <?php include 'footer.php'?>
 
 </div>
-<script src="js/jquery-1.12.4.js"></script>
-<script>
-    $('#info').on('click',function () {
-        $.get('', {},function (data) {location.href = 'welcome/show_info';},'text')
-    });
-    $('#grade').on('click',function () {
-        $.get('', {},function (data) {location.href = 'welcome/show_course';},'text')
-    })
-    $('#feedback').on('click',function () {
-        $.get('', {},function (data) {location.href = 'welcome/feedback';},'text')
-    })
-
-</script>
-
-
 </body>
 </html>

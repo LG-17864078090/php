@@ -70,6 +70,18 @@ class User_model extends CI_Model
         return $query;
     }
 
+    //更改学生信息
+    public function update_parent_info($parentID,$phone,$address){
+        $data = array(
+            'phone' => $phone,
+            'address' => $address,
+        );
+
+        $this->db->where('childID', $parentID);
+        $query = $this->db->update('parents', $data);
+        return $query;
+    }
+
     //保存家长信息
     public function save_parent($childID,$password,$name,$sex,$phone,$address,$teacherID){
         $data = array(

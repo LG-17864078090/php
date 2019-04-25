@@ -12,11 +12,11 @@
     <?php include 'header.php'?>
     <div class="main">
         <div class="operating">用户信息查询</div>
-        <div class="operating">用户信息调整</div>
         <div class="operating">辅助学生注册</div>
         <div class="operating">辅助家长注册</div>
         <div class="operating">个人信息更改</div>
         <div class="operating">我的课程</div>
+        <div class="operating">问题反馈</div>
 
 
     </div>

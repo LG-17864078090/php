@@ -28,11 +28,14 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
     $('#info').on('click',function () {
-        $.get('', {},function (data) {location.href = 'welcome/show_info';},'text')
+        $.get('', {},function (data) {location.href = 'welcome/show_student_info';},'text')
     });
     $('#grade').on('click',function () {
-        $.get('', {},function (data) {location.href = 'welcome/show_course';},'text')
-    })
+        $.get('', {},function (data) {location.href = 'welcome/show_student_grade';},'text')
+    });
+    $('#chooseCourse').on('click',function () {
+        $.get('', {},function (data) {location.href = 'welcome/choose_course';},'text')
+    });
     $('#feedback').on('click',function () {
         $.get('', {},function (data) {location.href = 'welcome/feedback';},'text')
     })
