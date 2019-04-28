@@ -84,6 +84,26 @@ class Course_model extends CI_Model
         return $query->result();
     }
 
+    //老师获取课程学生成绩
+    public function get_course_student_grade($courseID){
+        $sql = 'SELECT grade.*, students.name
+                from grade,students
+                WHERE grade.cID = '."$courseID".' and grade.sID = students.studentID';
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+
+    //老师修改课程学生成绩
+    public function save_student_grade($sID,$cID,$grade){
+        $data = array(
+            'grade' => $grade,
+        );
+
+        $query = $this->db->update('grade', $data, array('sID' => $sID,'cID' => $cID));
+        return $query;
+    }
+
 
     //获取老师课程
     public function get_my_course_list($teacherID){

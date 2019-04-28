@@ -562,7 +562,6 @@ class user extends CI_Controller {
         }else{
             echo 'fail';
         }
-
     }
 
 
@@ -575,7 +574,6 @@ class user extends CI_Controller {
         }else{
             echo 'fail';
         }
-
     }
 
     //帮助家长注册
@@ -587,8 +585,30 @@ class user extends CI_Controller {
         }else{
             echo 'fail';
         }
+    }
+
+    //老师获取课程的学生成绩
+    public function get_student_grade(){
+        $courseID = $this->input->get('courseID');
+        $query = $this->Course_model->get_course_student_grade($courseID);
+        echo json_encode($query);
 
     }
+
+    //老师修改学生成绩
+    public function save_student_grade(){
+        $sID = $this->input->get('sID');
+        $cID = $this->input->get('cID');
+        $grade = $this->input->get('grade');
+        $row = $this->Course_model->save_student_grade($sID,$cID,$grade);
+        if($row){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+
 
 
 
