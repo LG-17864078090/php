@@ -19,4 +19,11 @@ class Feedback_model extends CI_Model
         $query = $this->db->insert('feedback', $data);
         return $query;
     }
+
+    //获取反馈列表
+    public function get_feedback_list(){
+        $query = $this->db->get('feedback');
+        return $query->result();
+    }
+
 }

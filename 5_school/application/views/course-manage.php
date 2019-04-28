@@ -93,17 +93,7 @@
             },'text')
 
         }
-        //$('.deleteCourse').on('click',function () {
-        //
-        //    //$.get('user/delete_course/<?php ////echo $course->courseID?>////',{
-        //    //},function (data) {
-        //    //    if(data == 'success'){
-        //    //        location.href = 'welcome/course_manage';
-        //    //    }else if(data == 'fail'){
-        //    //        alert('删除失败');
-        //    //    }
-        //    //},'text')
-        //});
+
 
         $('.saveCourse').on('click',function () {
             var flag = true;

@@ -29,8 +29,7 @@
         width: 20px;
         float: right;
         margin-top: 4px;
-        margin-right
-        : 10px;
+        margin-right: 10px;
         cursor: pointer;
     }
 

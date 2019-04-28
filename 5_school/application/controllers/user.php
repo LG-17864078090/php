@@ -185,6 +185,122 @@ class user extends CI_Controller {
     }
 
 
+    //找回学生密码
+    public function find_student_password(){
+        $captcha = $this->session->userdata('captcha');
+        $ID = $this->input->get('ID');
+        $phone = $this->input->get('phone');
+        $password = $this->input->get('password');
+        $code = $this->input->get('code');
+
+        $rows = $this->User_model->get_student_by_ID($ID);
+        //后台验证
+        if(count($rows)<=0){
+            echo 'id_error';
+        }elseif($phone != $rows->phone){
+            echo 'phone_error';
+        }elseif($password == ''){
+            echo 'password_error';
+        }elseif($code != $captcha){
+            echo 'captcha_error';
+        }else{
+            $rows = $this->User_model->update_student_password($ID,$password);
+            if($rows>0){
+                echo 'success';
+            }else{
+                echo 'fail';
+            }
+        }
+    }
+
+    //找回家长密码
+    public function find_parent_password(){
+        $captcha = $this->session->userdata('captcha');
+        $ID = $this->input->get('ID');
+        $phone = $this->input->get('phone');
+        $password = $this->input->get('password');
+        $code = $this->input->get('code');
+
+        $rows = $this->User_model->get_parent_by_ID($ID);
+        //后台验证
+        if(count($rows)<=0){
+            echo 'id_error';
+        }elseif($phone != $rows->phone){
+            echo 'phone_error';
+        }elseif($password == ''){
+            echo 'password_error';
+        }elseif($code != $captcha){
+            echo 'captcha_error';
+        }else{
+            $rows = $this->User_model->update_parent_password($ID,$password);
+            if($rows>0){
+                echo 'success';
+            }else{
+                echo 'fail';
+            }
+        }
+    }
+
+    //找回老师密码
+    public function find_teacher_password(){
+        $captcha = $this->session->userdata('captcha');
+        $ID = $this->input->get('ID');
+        $phone = $this->input->get('phone');
+        $password = $this->input->get('password');
+        $code = $this->input->get('code');
+
+        $rows = $this->User_model->get_teacher_by_ID($ID);
+        //后台验证
+        if(count($rows)<=0){
+            echo 'id_error';
+        }elseif($phone != $rows->phone){
+            echo 'phone_error';
+        }elseif($password == ''){
+            echo 'password_error';
+        }elseif($code != $captcha){
+            echo 'captcha_error';
+        }else{
+            $rows = $this->User_model->update_teacher_password($ID,$password);
+            if($rows>0){
+                echo 'success';
+            }else{
+                echo 'fail';
+            }
+        }
+    }
+
+    //找回管理员密码
+    public function find_admin_password(){
+        $captcha = $this->session->userdata('captcha');
+        $ID = $this->input->get('ID');
+        $phone = $this->input->get('phone');
+        $password = $this->input->get('password');
+        $code = $this->input->get('code');
+
+        $rows = $this->User_model->get_admin_by_ID($ID);
+        //后台验证
+        if(count($rows)<=0){
+            echo 'id_error';
+        }elseif($phone != $rows->phone){
+            echo 'phone_error';
+        }elseif($password == ''){
+            echo 'password_error';
+        }elseif($code != $captcha){
+            echo 'captcha_error';
+        }else{
+            $rows = $this->User_model->update_admin_password($ID,$password);
+            if($rows>0){
+                echo 'success';
+            }else{
+                echo 'fail';
+            }
+        }
+    }
+
+
+
+
+
 
     //学生登陆检查
     public  function student_login_check(){
@@ -333,6 +449,40 @@ class user extends CI_Controller {
             echo 'fail';
         }
     }
+
+//    //管理员删除老师
+//    public function delete_teacher(){
+//        $ID = $this->input->get('ID');
+//        $rows = $this->User_model->delete_teacher_by_id($ID);
+//        if(count($rows)>0){
+//            echo 'success';
+//        }else{
+//            echo 'fail';
+//        }
+//    }
+
+    //管理员删除学生
+    public function delete_student(){
+        $ID = $this->input->get('ID');
+        $rows = $this->User_model->delete_student_by_id($ID);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
+    //管理员删除家长
+    public function delete_parent(){
+        $ID = $this->input->get('ID');
+        $rows = $this->User_model->delete_parent_by_id($ID);
+        if(count($rows)>0){
+            echo 'success';
+        }else{
+            echo 'fail';
+        }
+    }
+
 
     //管理员添加课程
     public function add_course(){

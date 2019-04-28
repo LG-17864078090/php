@@ -124,9 +124,84 @@ class User_model extends CI_Model
         return $query;
     }
 
-    //获取老师列表
+    //更改学生密码
+    public function update_student_password($ID,$password){
+        $data = array(
+            'password' => $password,
+        );
+        $this->db->where('studentID', $ID);
+        $query = $this->db->update('students', $data);
+        return $query;
+    }
+
+    //更改家长密码
+    public function update_parent_password($ID,$password){
+        $data = array(
+            'password' => $password,
+        );
+        $this->db->where('childID', $ID);
+        $query = $this->db->update('parents', $data);
+        return $query;
+    }
+
+    //更改老师密码
+    public function update_teacher_password($ID,$password){
+        $data = array(
+            'password' => $password,
+        );
+        $this->db->where('teacherID', $ID);
+        $query = $this->db->update('teachers', $data);
+        return $query;
+    }
+
+    //更改管理员密码
+    public function update_admin_password($ID,$password){
+        $data = array(
+            'password' => $password,
+        );
+        $this->db->where('adminID', $ID);
+        $query = $this->db->update('admin', $data);
+        return $query;
+    }
+
+    //删除学生用户
+    public function delete_student_by_id($ID){
+        $query = $this->db->delete('students', array(
+            'studentID' => $ID
+        ));
+        $this->db->delete('grade', array(
+            'sID' => $ID
+        ));
+        return  $query;
+    }
+
+    //删除家长用户
+    public function delete_parent_by_id($ID){
+        $query = $this->db->delete('parents', array(
+            'childID' => $ID
+        ));
+        return  $query;
+    }
+
+    //获取全部老师列表
     public function get_teacher_list(){
         $query = $this->db->get('teachers');
+        return $query->result();
+    }
+
+    //获取全部学生列表
+    public function get_student_list(){
+        $query = $this->db->get_where('students',array(
+            'exist' => 1
+        ));
+        return $query->result();
+    }
+
+    //获取全部家长列表
+    public function get_parent_list(){
+        $query = $this->db->get_where('parents',array(
+            'exist' => 1
+        ));
         return $query->result();
     }
 

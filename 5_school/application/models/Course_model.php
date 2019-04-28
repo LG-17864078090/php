@@ -77,16 +77,23 @@ class Course_model extends CI_Model
 
     //获取学生成绩
     public function get_student_grade($studentID){
-
         $sql = 'SELECT grade.*,course.courseName
                 from course, grade
                 where grade.sID=' ." $studentID ".'and grade.cID=course.courseID';
         $query = $this->db->query($sql);
-//        $query = $this->db->get_where('grade',array(
-//            'sID' => $studentID
-//        ));
         return $query->result();
     }
+
+
+    //获取老师课程
+    public function get_my_course_list($teacherID){
+        $query = $this->db->get_where('course',array(
+            'teacherID' => $teacherID
+        ));
+        return $query->result();
+    }
+
+
 
     //学生退选课程
     public function cancel_choose_course($courseID,$studentID){

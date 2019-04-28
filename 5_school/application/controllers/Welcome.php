@@ -29,6 +29,46 @@ class Welcome extends CI_Controller {
     }
 
 
+    //生成验证码
+    public function captcha(){
+        //先获取验证码
+        $this->load->helper('captcha');
+        $word = rand(1000,9999);
+        //随机数存入session用于验证验证码是否相同
+        $this->session->set_userdata('captcha',$word);
+
+        $vals = array(
+            'word'      => $word,
+            'img_path'  => './captcha/',
+            'img_url'   => 'http://127.0.0.1/php/5_school/captcha/',
+            'font_path' => './path/to/fonts/texb.ttf',
+            'img_width' => 100,
+            'img_height'    => 30,
+            'word_length'   => 8,
+            'font_size' => 16,
+            'pool'      => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+
+            // White background and border, black text and red grid
+            'colors'    => array(
+                'background' => array(255, 255, 255),
+                'border' => array(255, 255, 255),
+                'text' => array(0, 0, 0),
+                'grid' => array(255, 40, 40)
+            )
+        );
+//		GD2
+        $cap = create_captcha($vals);
+        $img = $cap['image'];
+        return $img;
+    }
+
+    //AJAX调用获取验证码
+    public function get_captcha(){
+        $img = $this->captcha();
+        echo $img;
+    }
+
+
 
 	public function index()//加载首页
 	{
@@ -56,6 +96,14 @@ class Welcome extends CI_Controller {
     public function reg()//加载注册页
     {
         $this->load->view('reg');
+    }
+
+    public function find_password()//加载找回密码页
+    {
+        $img = $this->captcha();
+        $this->load->view('find-password',array(
+            'captcha' => $img
+        ));
     }
 
     public function reg_success()//加载注册成功页
@@ -152,6 +200,14 @@ class Welcome extends CI_Controller {
     {
         $this->load->view('feedback');
     }
+
+    public function show_feedback()//显示问题反馈界面
+    {
+        $feedback_list = $this->Feedback_model->get_feedback_list();
+        $this->load->view('show-feedback',array(
+            'feedback_list' => $feedback_list
+        ));
+    }
     public function feedback_success()//问题反馈成功界面
     {
         $this->load->view('feedback-success');
@@ -170,6 +226,18 @@ class Welcome extends CI_Controller {
         ));
     }
 
+    public function user_manage()//用户管理界面
+    {
+        $teacher_list = $this->User_model->get_teacher_list();
+        $student_list = $this->User_model->get_student_list();
+        $parent_list = $this->User_model->get_parent_list();
+        $this->load->view('user-manage',array(
+            'student_list' => $student_list,
+            'teacher_list' => $teacher_list,
+            'parent_list' => $parent_list
+        ));
+    }
+
     public function help_reg()//辅助注册界面
     {
         $user = $this->session->user;
@@ -182,6 +250,21 @@ class Welcome extends CI_Controller {
             'parent_reg_list' => $parent_reg_list
         ));
     }
+
+    public function my_course()//老师课程界面
+    {
+        $user = $this->session->user;
+        $teacherID = $user->teacherID;
+        $my_course_list = $this->Course_model->get_my_course_list($teacherID);
+
+
+        $this->load->view('my-course',array(
+            'my_course_list' => $my_course_list,
+
+        ));
+    }
+
+
     public function change_school_info()//改变学校信息界面
     {
         $school_info = $this->Announce_model->get_school_info();

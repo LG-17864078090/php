@@ -16,6 +16,10 @@
 
         <div class="operating"><a href="welcome/course_manage">课程管理</a></div>
 
+        <div class="operating"><a href="welcome/user_manage">用户管理</a></div>
+
+        <div class="operating"><a href="welcome/show_feedback">查看反馈</a></div>
+
         <div class="operating"><a href="welcome/change_school_info">学校信息修改</a></div>
     </div>
 

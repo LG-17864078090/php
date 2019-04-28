@@ -34,7 +34,7 @@
             <input type="password" class="input password">
             <span class="warming password-error"> </span><br/>
             <button id="loginButton">登录</button>
-            <a href="">找回密码</a>
+            <a href="welcome/find_password">找回密码</a>
         </div>
 
     </div>

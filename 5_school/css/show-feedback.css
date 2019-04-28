@@ -1,0 +1,31 @@
+.main{
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.main .container{
+    margin: 0 50px;
+    padding-bottom: 10px;
+
+}
+.main .container .username{
+    font-size: 24px;
+    font-weight: 600;
+}
+.main .container .work{
+    font-size: 20px;
+    font-weight: 500;
+}
+.main .container .posttime{
+    color: #CCCCCC;
+    margin-left: 20px;
+}
+.main .container .content{
+    font-size: 16px;
+    font-family: "微软雅黑 Light";
+}
+
+.main .container .list{
+    border-bottom: 1px solid #ccddcc;
+    padding: 10px 10px;
+}

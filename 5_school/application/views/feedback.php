@@ -26,7 +26,7 @@
     $('#submitButton').on('click',function () {
 
         var problem = $('#problem').val();
-        var data = new Date().toLocaleString().replace(/[\u4e00-\u9fa5]/g,'');
+        var data = new Date().toLocaleString('chinese', { hour12: false });
         if(problem != ''){
             $.get('user/feedback', {
                 problem:problem,
@@ -40,9 +40,6 @@
         }else{
             alert('请输入问题描述！');
         }
-
-
-
     })
 </script>
 

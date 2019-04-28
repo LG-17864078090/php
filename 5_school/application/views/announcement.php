@@ -30,7 +30,7 @@
         $('.submit').on('click',function () {
             var title = $('.title').val();
             var content = $('.content').val();
-            var data = new Date().toLocaleString().replace(/[\u4e00-\u9fa5]/g,'');
+            var data = new Date().toLocaleString('chinese', { hour12: false });
             var flag = true;
             if(title == ''){
                 alert('请输入标题');
