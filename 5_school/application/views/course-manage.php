@@ -20,9 +20,9 @@
                         <td>课程编号</td>
                         <td>上课地点</td>
                         <td>授课老师</td>
-                        <td>节次</td>
-                        <td>上课时间</td>
-                        <td class="final-td">操作</td>
+                        <td>周次</td>
+                        <td class="time">上课时间</td>
+                        <td class="final-td"></td>
                     </tr>
 
                     <?php foreach ($course_list as $course){?>
@@ -31,8 +31,8 @@
                             <td><?php echo $course->courseID?></td>
                             <td><?php echo $course->classroomNum?></td>
                             <td><?php echo $course->name?></td>
-                            <td><?php echo $course->starttime?> - <?php echo $course->starttime+1?>节 </td>
-                            <td><?php echo $course->startweek?> - <?php echo $course->endweek?>周</td>
+                            <td><?php echo $course->week?></td>
+                            <td class="time"><?php echo $course->starttime?> - <?php echo $course->endtime?></td>
                             <td class="final-td"><button onclick="deleteCourse(<?php echo $course->courseID?>)" >删除</button></td>
                         </tr>
                     <?php }?>
@@ -50,21 +50,20 @@
                             </select>
                         </td>
                         <td>
-                            <select name="" id="starttime">
-
-                                    <option value="1">1-2节</option>
-                                    <option value="3">3-4节</option>
-                                    <option value="5">5-6节</option>
-                                    <option value="7">7-8节</option>
-                                    <option value="9">9-10节</option>
-
+                            <select name="" id="week">
+                                    <option value="周一">周一</option>
+                                    <option value="周二">周二</option>
+                                    <option value="周三">周三</option>
+                                    <option value="周四">周四</option>
+                                    <option value="周五">周五</option>
+                                    <option value="周六">周六</option>
+                                    <option value="周日">周日</option>
                             </select>
                         </td>
-                        <td><input type="number" class="startweek"> - <input type="number" class="endweek"></td>
+                        <td class="time"><input type="time" class="starttime"> - <input type="time" class="endtime"></td>
                         <td class="final-td"><button class="saveCourse">保存</button></td>
                     </tr>
                 </table>
-
 
                 <p class="total">已找到共 <?php echo count($course_list)?> 条课程</p>
 
@@ -101,15 +100,16 @@
             var courseID = $('.courseID').val();
             var classroomNum = $('.classroomNum').val();
             var teacherID = $('#teacherID').val();
-            var starttime = $('#starttime').val();
-            var startweek = $('.startweek').val();
-            var endweek = $('.endweek').val();
+            var week = $('#week').val();
+            var starttime = $('.starttime').val();
+            var endtime = $('.endtime').val();
+
             if(courseID == ''){
                 flag = false;
                 alert('请输入课程编号！');
-            }else if(startweek>endweek){
+            }else if(starttime > endtime){
                 flag = false;
-                alert('上课周数有误！');
+                alert('上课时间有误！');
             }
             if(flag){
                 $.get('user/courseID_check',{
@@ -123,9 +123,9 @@
                             courseID:courseID,
                             classroomNum:classroomNum,
                             teacherID:teacherID,
+                            week:week,
                             starttime:starttime,
-                            startweek:startweek,
-                            endweek:endweek
+                            endtime:endtime
 
                         },function (data) {
                             if(data == 'success'){

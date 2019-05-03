@@ -490,11 +490,11 @@ class user extends CI_Controller {
         $courseName = $this->input->get('courseName');
         $classroomNum = $this->input->get('classroomNum');
         $teacherID = $this->input->get('teacherID');
+        $week = $this->input->get('week');
         $starttime = $this->input->get('starttime');
-        $startweek = $this->input->get('startweek');
-        $endweek = $this->input->get('endweek');
+        $endtime = $this->input->get('endtime');
 
-        $rows = $this->Course_model->add_course($courseID,$courseName,$classroomNum,$teacherID,$startweek,$endweek,$starttime);
+        $rows = $this->Course_model->add_course($courseID,$courseName,$classroomNum,$teacherID,$week,$starttime,$endtime);
         if(count($rows)>0){
             echo 'success';
         }else{
@@ -502,10 +502,10 @@ class user extends CI_Controller {
         }
     }
 
-    //学生选课
+    //老师为学生选课
     public function choose_course(){
-        $courseID = $this->input->get('courseID');
-        $studentID = $this->input->get('studentID');
+        $courseID = $this->input->get('cID');
+        $studentID = $this->input->get('sID');
 
         $rows = $this->Course_model->choose_course($courseID,$studentID);
         if(count($rows)>0){
@@ -517,8 +517,8 @@ class user extends CI_Controller {
 
     //学生退选课程
     public function cancel_choose_course(){
-        $courseID = $this->input->get('courseID');
-        $studentID = $this->input->get('studentID');
+        $courseID = $this->input->get('cID');
+        $studentID = $this->input->get('sID');
         $rows = $this->Course_model->cancel_choose_course($courseID,$studentID);
         if(count($rows)>0){
             echo 'success';
@@ -538,11 +538,10 @@ class user extends CI_Controller {
             $feedbackerID = $user->studentID;
         }elseif ($work == 'parent'){
             $feedbackerID = $user->childID;
-        }elseif ($work == 'teacher'){
-            $feedbackerID = $user->teacherID;
         }
+        $receiverID = $user->teacherID;
 
-        $rows = $this->Feedback_model->save_feedback($problem,$feedbackerID,$time,$work);
+        $rows = $this->Feedback_model->save_feedback($problem,$feedbackerID,$time,$work,$receiverID);
         if(count($rows)>0){
             echo 'success';
         }else{
@@ -552,17 +551,17 @@ class user extends CI_Controller {
 
 
 
-    //检查是否已选该课程
-    public function check_choose(){
-        $courseID = $this->input->get('courseID');
-        $studentID = $this->input->get('studentID');
-        $course = $this->Course_model->check_choose($courseID,$studentID);
-        if($course){
-            echo 'success';
-        }else{
-            echo 'fail';
-        }
-    }
+//    //检查是否已选该课程
+//    public function check_choose(){
+//        $courseID = $this->input->get('courseID');
+//        $studentID = $this->input->get('studentID');
+//        $course = $this->Course_model->check_choose($courseID,$studentID);
+//        if($course){
+//            echo 'success';
+//        }else{
+//            echo 'fail';
+//        }
+//    }
 
 
     //帮助学生注册

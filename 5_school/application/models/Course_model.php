@@ -42,15 +42,15 @@ class Course_model extends CI_Model
     }
 
     //添加课程
-    public function add_course($courseID,$courseName,$classroomNum,$teacherID,$startweek,$endweek,$starttime){
+    public function add_course($courseID,$courseName,$classroomNum,$teacherID,$week,$starttime,$endtime){
         $data = array(
             'courseID' => $courseID,
             'courseName' => $courseName,
             'classroomNum' => $classroomNum,
             'teacherID' => $teacherID,
-            'startweek' => $startweek,
-            'endweek' => $endweek,
-            'starttime' => $starttime
+            'week' => $week,
+            'starttime' => $starttime,
+            'endtime' => $endtime
         );
         $query = $this->db->insert('course', $data);
         return $query;
@@ -64,6 +64,12 @@ class Course_model extends CI_Model
         );
         $query = $this->db->insert('grade', $data);
         return $query;
+    }
+
+    //获取grade表
+    public  function get_all_grade(){
+        $query = $this->db->get('grade');
+        return $query->result();
     }
 
     //获取学生已选课程

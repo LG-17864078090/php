@@ -19,7 +19,7 @@
                     <td>课程名</td>
                     <td>课程编号</td>
                     <td>上课地点</td>
-                    <td>节次</td>
+                    <td>周次</td>
                     <td class="final-td">上课时间</td>
                 </tr>
                 <?php foreach ($my_course_list as $my_course){?>
@@ -27,8 +27,8 @@
                         <td><?php echo $my_course->courseName?></td>
                         <td><?php echo $my_course->courseID?></td>
                         <td><?php echo $my_course->classroomNum?></td>
-                        <td><?php echo $my_course->starttime?> - <?php echo $my_course->starttime+1?>节 </td>
-                        <td class="final-td"><?php echo $my_course->startweek?> - <?php echo $my_course->endweek?>周</td>
+                        <td><?php echo $my_course->week?></td>
+                        <td class="final-td"><?php echo $my_course->starttime?> - <?php echo $my_course->endtime?></td>
                     </tr>
                 <?php }?>
             </table>
@@ -42,7 +42,6 @@
                 <?php }?>
 
             </ul>
-
 
 
             <table id="grade">

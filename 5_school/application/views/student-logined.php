@@ -17,7 +17,7 @@
 
         <div class="operating" id="info"><a href="welcome/show_student_info">个人信息查询</a></div>
         <div class="operating" id="grade"><a href="welcome/show_student_grade">个人成绩查询</a></div>
-        <div class="operating" id="chooseCourse"><a href="welcome/choose_course">选课</a></div>
+        <div class="operating" id="chooseCourse"><a href="welcome/show_student_course">我的课程</a></div>
         <div class="operating" id="feedback"><a href="welcome/feedback">信息反馈</a></div>
 
     </div>

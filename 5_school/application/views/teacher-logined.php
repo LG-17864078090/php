@@ -14,7 +14,9 @@
         <div class="operating"><a href="welcome/show_teacher_info">个人信息查询</a></div>
         <div class="operating"><a href="welcome/help_reg">辅助注册</a></div>
         <div class="operating"><a href="welcome/my_course">我的课程</a></div>
-        <div class="operating"><a href="welcome/feedback">问题反馈</a></div>
+        <div class="operating"><a href="welcome/my_student">学生课程管理</a></div>
+        <div class="operating"><a href="welcome/show_feedback">查看反馈</a></div>
+
 
     </div>
 

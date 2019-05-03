@@ -29,6 +29,9 @@ class Welcome extends CI_Controller {
     }
 
 
+
+
+
     //生成验证码
     public function captcha(){
         //先获取验证码
@@ -152,13 +155,19 @@ class Welcome extends CI_Controller {
             'grade_list' => $grade_list
         ));
     }
-    public function choose_course()//学生选课界面
+    public function show_student_course()//学生显示课程界面
     {
         $user = $this->session->user;
         $my_course_list = $this->Course_model->get_student_course_list_by_studentID($user->studentID);
-        $course_list = $this->Course_model->get_course_list();
-        $this->load->view('choose-course',array(
-            'course_list' => $course_list,
+
+        foreach ($my_course_list as $course){
+            $starttime = date_create($course->starttime);
+            $endtime = date_create($course->endtime);
+            $course->starttime = date_format($starttime,"H:i");
+            $course->endtime = date_format($endtime,"H:i");
+        }
+
+        $this->load->view('show-student-course',array(
             'my_course_list' => $my_course_list,
         ));
     }
@@ -201,9 +210,11 @@ class Welcome extends CI_Controller {
         $this->load->view('feedback');
     }
 
-    public function show_feedback()//显示问题反馈界面
+    public function show_feedback()//老师显示问题反馈界面
     {
-        $feedback_list = $this->Feedback_model->get_feedback_list();
+        $user = $this->session->user;
+        $teacherID = $user->teacherID;
+        $feedback_list = $this->Feedback_model->get_feedback_list_by_teacherID($teacherID);
         $this->load->view('show-feedback',array(
             'feedback_list' => $feedback_list
         ));
@@ -216,10 +227,19 @@ class Welcome extends CI_Controller {
     {
         $this->load->view('announcement');
     }
-    public function course_manage()//课程管理界面
+    public function course_manage()//管理员课程管理界面
     {
         $teacher_list = $this->User_model->get_teacher_list();
         $course_list = $this->Course_model->get_course_list();
+
+        //改变时间格式
+        foreach ($course_list as $course){
+            $starttime = date_create($course->starttime);
+            $endtime = date_create($course->endtime);
+            $course->starttime = date_format($starttime,"H:i");
+            $course->endtime = date_format($endtime,"H:i");
+        }
+
         $this->load->view('course-manage',array(
             'course_list' => $course_list,
             'teacher_list' => $teacher_list
@@ -257,10 +277,38 @@ class Welcome extends CI_Controller {
         $teacherID = $user->teacherID;
         $my_course_list = $this->Course_model->get_my_course_list($teacherID);
 
+        foreach ($my_course_list as $course){
+            $starttime = date_create($course->starttime);
+            $endtime = date_create($course->endtime);
+            $course->starttime = date_format($starttime,"H:i");
+            $course->endtime = date_format($endtime,"H:i");
+        }
 
         $this->load->view('my-course',array(
             'my_course_list' => $my_course_list,
+        ));
+    }
 
+
+    public function my_student()//老师班级学生管理页面
+    {
+        $user = $this->session->user;
+        $teacherID = $user->teacherID;
+        $my_student_list = $this->User_model->get_my_student_list($teacherID);
+        $course_list = $this->Course_model->get_course_list();
+        $grade_list = $this->Course_model->get_all_grade();
+
+//        foreach ($my_course_list as $course){
+//            $starttime = date_create($course->starttime);
+//            $endtime = date_create($course->endtime);
+//            $course->starttime = date_format($starttime,"H:i");
+//            $course->endtime = date_format($endtime,"H:i");
+//        }
+
+        $this->load->view('my-student',array(
+            'my_student_list' => $my_student_list,
+            'course_list' => $course_list,
+            'grade_list' => $grade_list
         ));
     }
 

@@ -38,9 +38,7 @@
     color: #CCCCCC;
     font-size: 14px;
 }
-.main .course .add .startweek,.main .course .add .endweek{
-    width: 40%;
-}
+
 
 .course-name-list>li{
     float: left;

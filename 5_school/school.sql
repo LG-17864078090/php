@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-04-25 09:05:11
+Date: 2019-04-30 16:37:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,7 +33,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1001', '123', 'admin', '男', '13954027535', '哈尔滨');
+INSERT INTO `admin` VALUES ('1', '1001', '1234', 'admin', '男', '13954027535', '哈尔滨');
 
 -- ----------------------------
 -- Table structure for announces
@@ -46,7 +46,7 @@ CREATE TABLE `announces` (
   `publisherID` int(20) NOT NULL,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of announces
@@ -56,6 +56,7 @@ INSERT INTO `announces` VALUES ('28', '我还年轻', '在这个世界里\n\n寻
 INSERT INTO `announces` VALUES ('29', '我曾（Cover：隔壁老樊）', '我曾被无数的冷风\n\n吹透我胸口\n\n我曾被遥远的梦\n\n逼着我仰望星空\n\n我曾被无数的嘲讽\n\n让我放弃我的音乐梦\n\n我曾被无数的黄土\n\n淹没我的澎湃汹涌\n\n我曾想要我的歌声\n\n无尽沉沦的感动\n\n我曾把他们当成我\n\n风雨过后那一道彩虹\n\n我曾把堕落的原因\n\n都丢给时间\n\n我曾把机会就扔在我眼前\n\n我曾把完整的镜子打碎\n\n夜晚的枕头都是眼泪\n\n我多想让过去重来\n\n再给我一次机会\n\n我想说过去的时间\n\n我谁都不为\n\n除了空谈\n\n也就是事事非非\n\n我曾想要我的歌声\n\n无尽沉沦的感动\n\n我曾把他们当作我\n\n风雨过后那一道彩虹\n\n我曾把堕落的原因\n\n都丢给时间\n\n我曾把机会就扔在我眼前\n\n我曾把完整的镜子打碎\n\n夜晚的枕头都是眼泪\n\n我多想让过去重来\n\n再给我一次机会\n\n我想说过去的时间\n\n我谁都不为\n\n除了空谈\n\n也就是事事非非\n\n我曾把完整的镜子打碎\n\n夜晚的枕头都是眼泪\n\n我多想让过去重来\n\n再给我一次机会\n\n我想说过去的时间\n\n我谁都不为\n\n除了空谈\n\n也就是事事非非', '1001', '2019-04-18 07:41:17');
 INSERT INTO `announces` VALUES ('30', '电饭锅和进口量是电饭锅回家考虑', 'ear三天打鱼复古红计科', '1001', '2019-04-18 07:42:49');
 INSERT INTO `announces` VALUES ('31', 'lalal', 'dcgshgj阿斯钢杜哈快睡吧DAU上帝把苏地哦啊接口文档发芽我的三的十大歌手点发送发顺丰水电费水电费工商分局很快就发挥各服务地方说过的话肥假话该课号很干净发货单工时费打就会根据发货单工时费撒地方的规范化归咎于乳液挺舒服的张旭从下表少加横岗犹太人也太水电费需出厂编号结果因太丰富', '1001', '2019-04-23 09:39:49');
+INSERT INTO `announces` VALUES ('32', '测试', '测试', '1001', '2019-04-27 17:11:08');
 
 -- ----------------------------
 -- Table structure for course
@@ -71,18 +72,19 @@ CREATE TABLE `course` (
   `startweek` int(2) DEFAULT NULL,
   `endweek` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`,`courseID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of course
 -- ----------------------------
-INSERT INTO `course` VALUES ('6', '654', 'vb', '1997', '543', '1', '1', '3');
 INSERT INTO `course` VALUES ('7', '2432', 'java', '1995', '989', '1', '10', '14');
 INSERT INTO `course` VALUES ('9', '4531', '操作系统', '1994', '65', '3', '3', '4');
 INSERT INTO `course` VALUES ('10', '3453', '高数', '1997', '789', '5', '1', '6');
 INSERT INTO `course` VALUES ('11', '4532', 'j2ee', '1994', '32', '3', '1', '4');
 INSERT INTO `course` VALUES ('14', '6789', '.net', '123', '2342', '7', '5', '8');
 INSERT INTO `course` VALUES ('15', '3421', '语文', '1234567', '675', '9', '6', '9');
+INSERT INTO `course` VALUES ('16', '654', 'vb', '12', '234', '5', '2', '3');
+INSERT INTO `course` VALUES ('17', '2345', 'css', '1997', '234', '5', '5', '7');
 
 -- ----------------------------
 -- Table structure for feedback
@@ -115,15 +117,16 @@ CREATE TABLE `grade` (
   `cID` int(20) NOT NULL,
   `grade` int(5) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of grade
 -- ----------------------------
-INSERT INTO `grade` VALUES ('4', '20162838', '654', '0');
-INSERT INTO `grade` VALUES ('8', '20160472', '3453', '0');
-INSERT INTO `grade` VALUES ('9', '20160472', '453', '0');
 INSERT INTO `grade` VALUES ('10', '20162838', '2432', '0');
+INSERT INTO `grade` VALUES ('11', '20162838', '2345', '12');
+INSERT INTO `grade` VALUES ('12', '20162234', '2345', '14');
+INSERT INTO `grade` VALUES ('13', '20162234', '2432', '0');
+INSERT INTO `grade` VALUES ('14', '20162234', '4532', '0');
 
 -- ----------------------------
 -- Table structure for parents
@@ -140,12 +143,11 @@ CREATE TABLE `parents` (
   `teacherID` int(20) DEFAULT NULL,
   `exist` int(2) NOT NULL DEFAULT '0' COMMENT '0未注册，1已注册',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of parents
 -- ----------------------------
-INSERT INTO `parents` VALUES ('1', '20162838', 'liguan', 'LG家长', '男', '13954027535', '哈尔滨南岗家长', '1997', '1');
 
 -- ----------------------------
 -- Table structure for school_info
@@ -178,14 +180,14 @@ CREATE TABLE `students` (
   `teacherID` int(20) DEFAULT NULL,
   `exist` int(2) NOT NULL DEFAULT '0' COMMENT '0未注册，1已注册',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of students
 -- ----------------------------
-INSERT INTO `students` VALUES ('2', '20160472', 'wuxi', '吴玺', '男', '13111111111', '哈尔滨', '1994', '1');
-INSERT INTO `students` VALUES ('4', '20162234', 'wuxi', '吴玺玺', '男', '15545992557', '哈尔滨', '1995', '0');
-INSERT INTO `students` VALUES ('5', '20162838', '??', '学生李冠', '男', '13954027535', '黑龙江大学', '1997', '1');
+INSERT INTO `students` VALUES ('4', '20162234', 'wuxi', '吴玺玺', '男', '15545992557', '哈尔滨', '1995', '1');
+INSERT INTO `students` VALUES ('5', '20162838', '12345678', '学生李冠', '男', '13954027535', '黑龙江大学', '1997', '1');
+INSERT INTO `students` VALUES ('7', '1234', '123', 'lll', '男', '13900000000', '河南', '1995', '1');
 
 -- ----------------------------
 -- Table structure for teachers

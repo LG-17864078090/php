@@ -214,6 +214,17 @@ class User_model extends CI_Model
         return $query->result();
     }
 
+
+    //老师获取班级学生列表
+    public function get_my_student_list($teacherID){
+        $query = $this->db->get_where('students',array(
+            'teacherID'=> $teacherID,
+            'exist' => 1
+        ));
+        return $query->result();
+    }
+
+
     //获取需要辅助的家长列表
     public function get_parent_reg_list($teacherID){
         $sql = 'select parents.*

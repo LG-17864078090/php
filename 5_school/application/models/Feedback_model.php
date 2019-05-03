@@ -9,20 +9,23 @@
 class Feedback_model extends CI_Model
 {
     //保存问题反馈
-    public function save_feedback($problem,$studentID,$time,$work){
+    public function save_feedback($problem,$studentID,$time,$work,$receiveID){
         $data = array(
             'problem' => $problem,
             'time' => $time,
             'feedbackerID' => $studentID,
-            'feedbackerWork' => $work
+            'feedbackerWork' => $work,
+            'receiverID' => $receiveID
         );
         $query = $this->db->insert('feedback', $data);
         return $query;
     }
 
-    //获取反馈列表
-    public function get_feedback_list(){
-        $query = $this->db->get('feedback');
+    //老师获取反馈列表
+    public function get_feedback_list_by_teacherID($teacherID){
+        $query = $this->db->get_where('feedback',array(
+            'receiverID' => $teacherID
+        ));
         return $query->result();
     }
 
