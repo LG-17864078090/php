@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-04-30 16:37:59
+Date: 2019-05-03 10:41:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,7 +46,7 @@ CREATE TABLE `announces` (
   `publisherID` int(20) NOT NULL,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of announces
@@ -68,23 +68,23 @@ CREATE TABLE `course` (
   `courseName` varchar(20) CHARACTER SET utf8 NOT NULL,
   `teacherID` int(20) DEFAULT NULL,
   `classroomNum` int(20) DEFAULT NULL,
-  `starttime` int(2) DEFAULT '1',
-  `startweek` int(2) DEFAULT NULL,
-  `endweek` int(2) DEFAULT NULL,
+  `week` varchar(5) CHARACTER SET utf8 DEFAULT NULL,
+  `starttime` time(2) DEFAULT NULL,
+  `endtime` time(2) DEFAULT NULL,
   PRIMARY KEY (`id`,`courseID`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of course
 -- ----------------------------
-INSERT INTO `course` VALUES ('7', '2432', 'java', '1995', '989', '1', '10', '14');
-INSERT INTO `course` VALUES ('9', '4531', '操作系统', '1994', '65', '3', '3', '4');
-INSERT INTO `course` VALUES ('10', '3453', '高数', '1997', '789', '5', '1', '6');
-INSERT INTO `course` VALUES ('11', '4532', 'j2ee', '1994', '32', '3', '1', '4');
-INSERT INTO `course` VALUES ('14', '6789', '.net', '123', '2342', '7', '5', '8');
-INSERT INTO `course` VALUES ('15', '3421', '语文', '1234567', '675', '9', '6', '9');
-INSERT INTO `course` VALUES ('16', '654', 'vb', '12', '234', '5', '2', '3');
-INSERT INTO `course` VALUES ('17', '2345', 'css', '1997', '234', '5', '5', '7');
+INSERT INTO `course` VALUES ('7', '2432', 'java', '1995', '989', '周一', '08:00:00.00', '09:00:00.00');
+INSERT INTO `course` VALUES ('9', '4531', '操作系统', '1994', '65', '周三', '09:00:00.00', '10:00:00.00');
+INSERT INTO `course` VALUES ('10', '3453', '高数', '1997', '789', '周五', '10:00:00.00', '11:00:00.00');
+INSERT INTO `course` VALUES ('11', '4532', 'j2ee', '1994', '32', '周末', '13:00:00.00', '14:00:00.00');
+INSERT INTO `course` VALUES ('14', '6789', '.net', '123', '2342', '周二', '14:00:00.00', '15:00:00.00');
+INSERT INTO `course` VALUES ('15', '3421', '语文', '1234567', '675', '周四', '15:00:00.00', '16:00:00.00');
+INSERT INTO `course` VALUES ('16', '654', 'vb', '12', '234', '周三', '16:00:00.00', '17:00:00.00');
+INSERT INTO `course` VALUES ('17', '2345', 'css', '1997', '234', '周一', '09:00:00.00', '10:00:00.00');
 
 -- ----------------------------
 -- Table structure for feedback
@@ -96,16 +96,16 @@ CREATE TABLE `feedback` (
   `feedbackerID` int(20) NOT NULL,
   `feedbackerWork` varchar(15) DEFAULT NULL,
   `time` datetime DEFAULT NULL,
+  `receiverID` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of feedback
 -- ----------------------------
-INSERT INTO `feedback` VALUES ('33', '啦啦啦啦啦', '20162838', 'parent', '2019-04-24 04:14:21');
-INSERT INTO `feedback` VALUES ('34', '啧啧啧', '20162838', 'student', '2019-04-24 04:15:04');
-INSERT INTO `feedback` VALUES ('35', '我是老师反馈', '1997', 'teacher', '2019-04-25 08:23:35');
-INSERT INTO `feedback` VALUES ('36', '学生反馈', '20162838', 'student', '2019-04-25 08:25:18');
+INSERT INTO `feedback` VALUES ('37', '反馈测试', '20162838', 'student', '2019-05-02 11:32:21', '1997');
+INSERT INTO `feedback` VALUES ('38', '家长反馈测试', '20162838', 'parent', '2019-05-02 11:34:09', '1997');
+INSERT INTO `feedback` VALUES ('39', '学生反馈', '20162234', 'student', '2019-05-02 11:37:35', '1995');
 
 -- ----------------------------
 -- Table structure for grade
@@ -117,16 +117,19 @@ CREATE TABLE `grade` (
   `cID` int(20) NOT NULL,
   `grade` int(5) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of grade
 -- ----------------------------
 INSERT INTO `grade` VALUES ('10', '20162838', '2432', '0');
-INSERT INTO `grade` VALUES ('11', '20162838', '2345', '12');
 INSERT INTO `grade` VALUES ('12', '20162234', '2345', '14');
 INSERT INTO `grade` VALUES ('13', '20162234', '2432', '0');
 INSERT INTO `grade` VALUES ('14', '20162234', '4532', '0');
+INSERT INTO `grade` VALUES ('16', '123', '2432', '0');
+INSERT INTO `grade` VALUES ('17', '123', '4531', '0');
+INSERT INTO `grade` VALUES ('19', '123', '3453', '80');
+INSERT INTO `grade` VALUES ('22', '123', '2345', '68');
 
 -- ----------------------------
 -- Table structure for parents
@@ -143,11 +146,12 @@ CREATE TABLE `parents` (
   `teacherID` int(20) DEFAULT NULL,
   `exist` int(2) NOT NULL DEFAULT '0' COMMENT '0未注册，1已注册',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of parents
 -- ----------------------------
+INSERT INTO `parents` VALUES ('1', '20162838', '123', '家长test', '女', '13111111111', '黑大', '1997', '1');
 
 -- ----------------------------
 -- Table structure for school_info
@@ -180,7 +184,7 @@ CREATE TABLE `students` (
   `teacherID` int(20) DEFAULT NULL,
   `exist` int(2) NOT NULL DEFAULT '0' COMMENT '0未注册，1已注册',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of students
@@ -188,6 +192,7 @@ CREATE TABLE `students` (
 INSERT INTO `students` VALUES ('4', '20162234', 'wuxi', '吴玺玺', '男', '15545992557', '哈尔滨', '1995', '1');
 INSERT INTO `students` VALUES ('5', '20162838', '12345678', '学生李冠', '男', '13954027535', '黑龙江大学', '1997', '1');
 INSERT INTO `students` VALUES ('7', '1234', '123', 'lll', '男', '13900000000', '河南', '1995', '1');
+INSERT INTO `students` VALUES ('8', '123', '123', '123', '女', '13111111111', 'nanana', '1997', '1');
 
 -- ----------------------------
 -- Table structure for teachers
