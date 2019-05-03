@@ -100,7 +100,6 @@ class user extends CI_Controller {
         }else{
             $rows = $this->User_model->save_parent($childID,$password,$name,$sex,$phone,$address,$teacherID);
             if($rows>0){
-//                $this->session->set_userdata('user',$rows);
                 echo 'success';
             }else{
                 echo 'fail';
@@ -452,14 +451,14 @@ class user extends CI_Controller {
 
 //    //管理员删除老师
 //    public function delete_teacher(){
-//        $ID = $this->input->get('ID');
-//        $rows = $this->User_model->delete_teacher_by_id($ID);
-//        if(count($rows)>0){
-//            echo 'success';
-//        }else{
-//            echo 'fail';
-//        }
-//    }
+////        $ID = $this->input->get('ID');
+////        $rows = $this->User_model->delete_teacher_by_id($ID);
+////        if(count($rows)>0){
+////            echo 'success';
+////        }else{
+////            echo 'fail';
+////        }
+////    }
 
     //管理员删除学生
     public function delete_student(){
@@ -607,9 +606,11 @@ class user extends CI_Controller {
         }
     }
 
-
-
-
-
+    //查询公告
+    public function find_announce(){
+        $text = $this->input->get('text');
+        $query = $this->Announce_model->find_announce($text);
+        echo json_encode($query);
+    }
 
 }

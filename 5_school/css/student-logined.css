@@ -21,18 +21,3 @@
     out-line: none;
     color: black;
 }
-
-.main .search{
-    margin-top: 20px;
-text-align: center;
-}
-.main .search>input{
-    padding: 0 10px;
-    width: 260px;
-    height: 25px;
-}
-.main .search>button{
-    height: 25px;
-    width: 60px;
-    margin-left: 10px;
-}

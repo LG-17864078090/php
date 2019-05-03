@@ -17,7 +17,6 @@
         <div class="operating"><a href="welcome/my_student">学生课程管理</a></div>
         <div class="operating"><a href="welcome/show_feedback">查看反馈</a></div>
 
-
     </div>
 
     <?php include 'footer.php'?>
